@@ -1,0 +1,350 @@
+/* CSS Document */
+
+body{margin:0px; padding:0px; font-family:Arial, Helvetica, sans-serif; font-size:12px;}
+h1, h2, h3, h4, h5, h6, h7, p, form, input, ul, li{padding:0px; margin:0px; font-weight:normal;}
+p{line-height:16px}
+ul,ol,li {list-style:none;}
+input, select, textarea{font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#000;}
+a{text-decoration:none; outline:none;}
+a:hover{text-decoration:underline; outline:none;}
+a img{border:0px; outline:none;}
+.clear{clear:both; font-size:0px; height:0px; line-height:0px; display:block; background:#fff;}
+.fleft{float:left;}
+.fright{float:right;}
+
+/* ======================================== Master Styles ============================================ */
+.Master_div{width:1000px; margin:0px auto;}
+/* ======================================== Header Styles ============================================ */
+.PD_header{width:980px; margin:0px auto;}
+.upper_head{width:980px; margin:0px auto; background-color:#3f3f3f; height:53px;}
+.navi{width:980px; border-top:1px solid #808080; border-bottom:1px solid #a9a9a9;}
+.navi ul{margin:0px;}
+.navi li{float:left; list-style:none;}
+.navi li a{float:left; font:normal 13px Arial, Helvetica, sans-serif; color:#3c3c3c; line-height:24px; background:url(../images/head_nav_bg.png) repeat-x left top; padding:6px 30px 6px 29px; border-left:1px solid #808080; text-decoration:none;}
+.navi li.head_nav_sel a,.navi li a:hover{background:url(../images/head_sel_nav_bg.png) repeat-x left top;}
+
+/* ======================================== Product Detail Styles ============================================ */
+.PD_main_form{width:980px; margin:0px auto; padding:30px 0 0 0;}
+.PD_box1{width:310px; float:left; border-right:8px solid #ff7e00; padding:0 0 0 10px;}
+.PD_main_form h1{font:bold 15px Arial, Helvetica, sans-serif; color:#ff8a00; line-height:13px; margin:20px 0 0 0; float:left;}
+.PD_main_form h1 span{font-weight:normal; color:#242424;}
+.PD_main_form label{font:normal 13px Arial, Helvetica, sans-serif; color:#242424; margin:10px 0 3px 0; float:left; width:250px;}
+.PD_main_form textarea{font:normal 13px Arial, Helvetica, sans-serif; color:#242424; margin:10px 0 3px 0; float:left; width:285px; overflow:auto;}
+.PD_main_form option{font:normal 13px Arial, Helvetica, sans-serif; color:#242424; float:left;}
+.PD_main_form select{border:1px solid #a1a1a1;}
+.PD_main_form input.submit{background:url(../images/submit.png) no-repeat left top; width:99px; height:29px; float:left; border:0px;}
+
+.PD_main_form h6{font:normal 10px Arial, Helvetica, sans-serif; color:#242424; line-height:15px; margin:0px 0 0 0; float:left;}
+
+.PD_box2{width:315px; float:left; padding:0 0 0 20px; border:0px;}
+.PD_main_form input.NFD{font:normal 13px Arial, Helvetica, sans-serif; color:#242424; float:left; width:138px !important; margin:0 5px 0 0;}
+
+.PD_main_form img{margin:2px 0 0 0px;}
+
+/* ======================================== Multimedia Styles ============================================ */
+.multimedia{width:920px; margin:0px auto; padding:0 0 50px 0;}
+.multimedia h2{font:normal 10px Arial, Helvetica, sans-serif; color:#000000; line-height:13px; margin:3px 0 0 5px; float:left;}
+.multimedia h3{font:normal 10px Arial, Helvetica, sans-serif; color:#3c3c3c; line-height:13px; margin:20px 0 0 0; float:left;}
+
+.multimedia input{border:1px solid #000; width:235px; font:normal 14px Arial, Helvetica, sans-serif; color:#3c3c3c; padding:5px 0 0 10px; background:#f0f0f0 none; height:25px;}
+.media_box{width:108px; border:1px solid #ded1d1; margin:15px 5px 0 0; float:left;}
+.media_box img{margin:13px 0 10px 10px;}
+.media_box h4 a{font:normal 10px Arial, Helvetica, sans-serif; color:#000; line-height:13px; padding:5px 0px; text-align:center; float:left; background-color:#ded1d1; width:54px; text-decoration:none;}
+.media_box h4.edit_text a{background-color:#bbbbbb;}
+.media_box h4.desc_text{background-color:#f2c43b; width:108px; font:normal 10px Arial, Helvetica, sans-serif; color:#000; line-height:13px; text-align:center; float:left; padding:3px 0; margin:0 0px 1px 0;}
+.radio h5{ font:normal 10px Arial, Helvetica, sans-serif; color:#000; line-height:13px; float:left; padding:5px 0;}
+.radio h5 input{float:left; width:16px; margin:0 3px 0 3px;}
+.radio{background-color:#bbbbbb; width:108px; float:left;}
+
+/* Related ==========================================================================================*/
+.related { width: 920px; margin: 0px auto; padding: 0 0 50px 0; }
+
+.related td.header { height: 30px; background: url(../images/headerback.gif) repeat-x; text-align: center; font-weight: bold; color: #fff; }
+.related td.checkbox { width: 35px; height: 30px; border: 1px solid #a0a0a0; }
+.related td.sku { width: 150px;  height: 30px;  border: 1px solid #a0a0a0; }
+.related td.name { width: 400px;  height: 30px;  border: 1px solid #a0a0a0; }
+.related td.price { width: 200px;  height: 30px;  border: 1px solid #a0a0a0; }
+
+.related td.skusearch { width: 150px;  height: 30px; background:#f4f4f4; text-align: center; }
+.related td.namesearch { width: 400px;  height: 30px; background:#f4f4f4; text-align: center;}
+.related td.pricesearch { width: 200px;  height: 30px; background:#f4f4f4; text-align: center; }
+.related h1 { font-size: 15px; font-weight: bold; color: #ff8800; }
+.related input.button { background-color: #ff8800; color: #fff; font-weight: bold; width: 100px; border: 0px; padding: 3px; cursor: pointer; float: right; }
+.related input.text { background-color: #9c9c9c; color: #fff; border: 0px; height: 25px; width: 90%; }
+
+/* Orders ============================================================================================ */
+.orders td.headers { height: 35px; background-color: #ff6600; text-align: center; font-size: 12px; font-weight: bold; }
+.orders td.headersmain { height: 35px; background-color: #efefef; color: #000; font-size: 14px; font-weight: bold; border-top: 1px solid #000; }
+.orders td.subheader { height: 35px; background-color: #757575; color: #fff; width: 50%; font-weight: bold; }
+.orders td.row1 { height: 35px; background-color: #efefef; font-size: 12px; }
+.orders td.row2 { height: 35px; font-size: 12px; }
+.orders td.left { text-align: left; padding-left: 13px; }
+.orders td.center { padding-left: 25px; text-align: center; }
+.orders input.initial { border: 1px solid #bebebe; width: 50px; height: 20px; }
+.orders input.search { border: 1px solid #bebebe; height: 25px; width: 90%; }
+.orders input.customers { border: 1px solid #bebebe; height: 25px; width: 200px; }
+.orders input.imprint { border: 1px solid #fff; background-color: #ff6600; color: #000; font-weight: bold; float: right; margin-right: 20px; padding: 10px 15px; }
+.orders input.option { border: 1px solid #bebebe; height: 25px; width: 200px; }
+.orders select.option { border: 1px solid #bebebe; height: 25px; width: 200px; }
+
+/* Options ========================================================================================== */
+.options { width: 980px; margin: 0px auto: padding: 0 0 50px 0; margin-top: 50px; }
+
+.options h1 { font-size: 15px; font-weight: bold; color: #ff8800; }
+.options h1 span{font-weight:normal; color:#242424;}
+.options h2 { font-weight: bold; color: #ff8800; }
+.options ul.leftmenu { border: 1px solid #cfcfcf; background: #e9e9e9; }
+.options li { color: #000; padding: 5px; line-height: 20px; margin-left: 10px; }
+.options a.menu { font-size: 13px; color: #000; text-decoration: none; }
+.options a.menu:hover { color: #ff7e00; }
+.options td.header { width: 30%; text-align: center; }
+.options td.remove { width: 10%; text-align: center; }
+.options input { width: 150px; border: 1px solid #c9c9c9; height: 25px; vertical-align: middle; }
+.options input.save { background: #ff7e00; color: #fff; border: solid 1px #a0a0a0; width: 70px; }
+.options input.save:hover { background: #3f3f3f; width: 70px; border: solid 1px #a0a0a0;}
+.options select { width: 150px; border: 1px solid #c9c9c9; height: 25px; } 
+.options textarea { width: 700px; height: 150px; }
+
+.options td.headercg { text-align: center; background: #ff7e00; font-size: 14px; font-weight: bold; color: #fff; border: solid 1px #b55a01; }
+.options td.headerst { font-weight: bold; font-size: 14px; color: #000; margin-top: 20px; }
+.options a { color: #000; text-decoration: none; }
+.options a:hover { color: #ff8800; }
+
+
+
+
+/* Imprint Options ========================================================================================== */
+.impOptions { width: 980px; margin: 0px auto; padding: 0px; margin-top: 20px; }
+.impOptions h1 { font-size: 16px; font-weight: bold; padding: 17px; background-color: #efefef; border-top: 1px solid #000; }
+.impOptions p.priceHeader { padding: 10px; font-weight: bold; color: #fff; background-color: #757575; margin-top: 3px; }
+.impOptions p.tpmargin { margin-top: 50px; }
+.impOptions p.bottom { text-align: right; margin-top: 20px; }
+.impOptions div.pricing { float: left; width: 180px; padding: 7px; margin: 3px 3px 0 0; height: 22px; text-align: center; font-weight: bold; }
+.impOptions div.default { background-color: #e0e0e0; vertical-align: middle; width: 178px; }
+.impOptions div.opt1 { background-color: #f1f0af; }
+.impOptions div.opt2 { background-color: #89d0fe; }
+.impOptions div.opt3 { background-color: #d1d1d1; }
+.impOptions div.opt4 { background-color: #feda00; margin-right: 0px; }
+.impOptions input.pricebox { width: 50px; border: 1px solid #abadb3; padding: 3px; }
+.impOptions input.larger { width: 130px; }
+.impOptions input.textbox { width: 250px; border: 1px solid #abadb3; padding: 3px; }
+.impOptions select.selectbox { width: 257px; border: 1px solid #abadb3; padding: 3px; }
+.impOptions div.amounts { background-color: #f2f2f2; }
+.impOptions div.first { width: 178px; }
+.impOptions div.last { margin-right: 0px; }
+.impOptions div.optname { width: 150px; float: left; padding: 7px; margin: 3px 3px 0 0; height: 22px; font-weight: bold; background-color: #f2f2f2; }
+.impOptions div.optvalue { width: 798px; margin-right: 0px; }
+.impOptions input.optbutton { padding: 7px 14px; background-color: #e7e7e7; color: #000; border: 1px solid #bebebe; margin-top: 20px; cursor: pointer; }
+.impOptions input.optbutton:hover { background-color: #989898; color: #fff; }
+.impOptions input.noMrg { margin-top: 0px; }
+.impOptions div.optColor { height: 15px; width: 15px; border: 1px solid #fff; float: left; }
+.impOptions td.small { width: 150px; }
+.impOptions td.med { width: 250px; }
+.impOptions td.lrg { width: 350px; }
+.impOptions td.sub { background-color: #f2f2f2; }
+.impOptions td img { width: 63px; height: 63px; }
+.impOptions p.color { width: 150px; float: left; text-align: right; margin-right: 10px; }
+
+
+
+/* End Imprint Options ========================================================================================== */
+
+
+/* ======================================== Login Styles ============================================ */
+.login{width:450px; margin:0px auto;}
+.login_T{width:440px; background:url(../images/login_T_bg.png) no-repeat left top; height:18px;}
+.login_C{width:440px; background:#141414 url(../images/login_C_bg.png) repeat-x left top; height:135px; padding:15px 0 0 0;}
+.login_C label{width:200px; float:left; font:normal 15px Arial, Helvetica, sans-serif; color:#fff; margin:0px 0 0 10px; line-height:24px; text-align:center;}
+.login_C input{width:160px; float:left; font:normal 15px Arial, Helvetica, sans-serif; color:#fff; background:url(../images/login_input.png) no-repeat left top; padding:15px 0 19px 15px; border:0px; margin:0 0 0 30px;}
+.login_C input.L_submit{background:url(../images/login_button.png) no-repeat left top; cursor:pointer; width:440px; height:57px; margin:45px 0 0 0px; padding:0px;}
+.login_C input.L_submit:hover{background:url(../images/login_button_hover.png) no-repeat left top; cursor:pointer; width:440px; height:57px;}
+.login_C input.L_submitF{background:url(../images/forgot_button.png) no-repeat left top; cursor:pointer; width:440px; height:57px; margin:45px 0 0 0px; padding:0px;}
+.login_C input.L_submitF:hover{background:url(../images/forgot_button_hover.png) no-repeat left top; cursor:pointer; width:440px; height:57px;}
+
+.login_C h6 span{font:bold 15px Arial, Helvetica, sans-serif; color:#ff0000; line-height:13px; float:left; padding:5px 0; width:440px; text-align:center;}
+.login_C h6 a{font:bold 15px Arial, Helvetica, sans-serif; color:#030303; line-height:13px; float:left; padding:5px 0; width:440px; text-align:center;}
+.login_C h6 a:hober{ text-decoration: none; color: #FF6600; }
+
+/* ======================================== Products view Styles ============================================ */
+.product_view{width:980px; margin:0px auto;}
+.PV_top{width:980px; margin:25px 0 20px 0px;}
+.PV_top ul.PV_top_ul{margin:0px 0 7px 0; float:left;}
+.PV_top ul.PV_top_ul li{float:left; color:#3c3c3c; line-height:17px; list-style:none; padding:0 3px;}
+.PV_top ul.PV_top_ul li a{font:normal 14px Arial, Helvetica, sans-serif; color:#3c3c3c; line-height:17px;}
+.PV_top form{float:left; margin:0 0 20px 0;}
+.PV_top option{font:normal 13px Arial, Helvetica, sans-serif; color:#242424; float:left; width:200px; background-color:#ededed;}
+.PV_top select{border:1px solid #a1a1a1; margin:0 10px 0 0; float:left;}
+
+.PV_center{width:980px; margin:0px;}
+.PV_center table{width:980px; float:left;}
+.PV_center table th{background-color:#d7d7d7; font:normal 15px Arial, Helvetica, sans-serif; color:#242424; padding:16px 0;}
+.PV_center table tr{margin:0px;}
+.PV_center table td{background-color:#d7d7d7; font:normal 15px Arial, Helvetica, sans-serif; color:#242424; padding:8px 0; text-align:center;}
+.PV_center table td.left_align{text-align:left; padding:0 0 0 13px;}
+.PV_center table td.DCV{width:90px; padding:0 0 0 20px;}
+
+.delete,.copy,.edit,.view{width:21px; float:left; margin:0 3px 0 0; cursor: pointer;}
+.delete a{background:url(../images/D.png) no-repeat left top; width:21px; height:21px; display:block;}
+.delete a:hover{background:url(../images/D_hover.png) no-repeat left top; width:21px; height:21px; text-decoration: none;}
+
+.edit a{background:url(../images/E.png) no-repeat left top; width:21px; height:21px; display:block;}
+.edit a:hover{background:url(../images/E_hover.png) no-repeat left top; width:21px; height:21px;}
+
+.copy a{background:url(../images/C.png) no-repeat left top; width:21px; height:21px; display:block;}
+.copy a:hover{background:url(../images/C_hover.png) no-repeat left top; width:21px; height:21px;}
+
+.view a{background:url(../images/V.png) no-repeat left top; width:21px; height:21px; display:block;}
+.view a:hover{background:url(../images/V_hover.png) no-repeat left top; width:21px; height:21px;}
+
+.PV_center table tr.PVC_color td{background-color:#ededed;}
+.PV_center ul.PV_cen_ul{margin:15px 0 7px 0; float:right;}
+.PV_center ul.PV_cen_ul li{float:left; color:#989898; line-height:24px; list-style:none; padding:0 3px;}
+.PV_center ul.PV_cen_ul li a{font:normal 15px Arial, Helvetica, sans-serif; color:#989898; line-height:24px;}
+
+/* ======================================== Shipping Styles ============================================ */
+.shipping {width:950px; margin:0px auto; padding-left:20px;}
+.ship_left {width:300px; float:left;}
+.ship_left select { width: 90%; height: 30px; border: 1px solid #bebebe; background-color: #f4f4f4; margin-top: 10px; font-size: 12px; vertical-align: top;  }
+.ship_left option { height: 35px; }
+.ship_left select.ups { background-color: #ddead7; color: #87a578; border: 1px solid #87a578; }
+
+
+ul#menu{ margin:25px 15px 0 0; float:left;}
+ul#menu ul{margin:0px;}
+ul#menu a {
+  display: block;
+  text-decoration: none;	
+}
+ul#menu li{margin:0 0 13px 0; width:240px; background-color:#92bb61; border:1px solid #a1a1a1;}
+ul#menu li ul li{margin:0px; padding:0; border:0px;}
+ul#menu li a {width:230px;
+  background:url(../images/ship_plus.gif) no-repeat right top;
+  color: #242424;	
+  font:normal 13px Arial, Helvetica, sans-serif;
+  padding:7px 0 7px 10px;
+}
+ul#menu li ul li a {background:#f4f4f4 none; width:229px; border-bottom:1px solid #a1a1a1;}
+
+.ship_right{width:630px; float:left;}
+.ship_right h2{font:normal 13px Arial, Helvetica, sans-serif; color:#242424; line-height:24px; margin:0px 0 0 0; float:left;}
+.ship_right input{width:229px; float:left; color:#000; font:normal 13px Arial, Helvetica, sans-serif; background-color:#f4f4f4; border:1px solid #a1a1a1; padding:5px 0 5px 10px; margin:0px 0 20px 0;}
+.ship_right input.submit {margin:5px 0 0  0px;	background:url(../images/submit.png) no-repeat left top; width:99px; height:29px; float:left; border:0px; cursor:pointer;}
+.ship_right input.submit:hover {background:url(../images/submit_hover.png) no-repeat left top; width:99px; height:29px; float:left; border:0px;}
+.ship_right input.cancel {margin:5px 0 0  5px;	background:url(../images/cancel.png) no-repeat left top; width:99px; height:29px; float:left; border:0px; cursor:pointer;}
+.ship_right input.cancel:hover {background:url(../images/cancel_hover.png) no-repeat left top; width:99px; height:29px; float:left; border:0px;}
+
+/* ======================================== Pricing Styles ============================================ */
+.price_top{width:455px; float:left;}
+.price_top select.type { width: 150px; height: 23px; border: 1px solid #a1a1a1; }
+
+.price_cen{width:950px; float:left;}
+.price_cen table{width:865px; margin:14px 0 0 0;}
+.price_cen table tr{float:left;}
+.price_cen table th{width:170px; padding:10px 0 10px 0; border:1px solid #a1a1a1; border-left:0px; color:#242424; font:normal 13px Arial, Helvetica, sans-serif; float:left;}
+.price_cen table th.PC_color{background-color:#ffb400; border-left:1px solid #a1a1a1;}
+.price_cen table th.PC_SKU{background-color:#94ceef;}
+.price_cen table th.PC_icon{background-color:#92bb61;}
+.price_cen table th.PC_image{background-color:#ded1d1;}
+.price_cen table th.PC_add{background-color:#bbbbbb;}
+.price_cen table th.PC_remove{background-color:#FF0000;}
+
+.price_cen table td{width:170px; padding:8px 0 8px 0; font:normal 13px Arial, Helvetica, sans-serif; text-align:center; color:#242424; background-color:#f4f4f4; border-left:1px solid #a1a1a1; border-bottom:1px solid #a1a1a1; float:left;}
+.price_cen table td img{margin:1px 10px 0 15px; padding:0px; float:right;}
+.price_cen table td h2{background-color:#bfbfbf; font:normal 13px Arial, Helvetica, sans-serif; line-height:24px; width:140px; margin:0 0 0 15px;}
+.price_cen table td.img_change{padding:5px 0px;}
+
+.price_cen h3{background:url(../images/GIC_bg.png) no-repeat left top; width:186px; text-align:center; height:29px; margin:15px 0 0 0; float:left; font:normal 13px Arial, Helvetica, sans-serif; line-height:24px; padding:3px 0 0 0;}
+.price_cen h3.generate{cursor: pointer;}
+.price_cen h4{margin:22px 0 0 0;}
+
+.price_btm{width:980px; margin:0px auto;}
+.price_btm table{width:455px; margin:14px 0 0px 25px;}
+.price_btm table th{width:115px; padding:10px 0 10px 0; border:1px solid #a1a1a1; border-left:0px; color:#242424; font:normal 13px Arial, Helvetica, sans-serif; float:left; background-color:#ffb400;}
+.price_btm table td{width:115px; padding:8px 0 8px 0; font:normal 13px Arial, Helvetica, sans-serif; text-align:center; color:#242424; background-color:#f4f4f4; border-left:1px solid #a1a1a1; border-bottom:1px solid #a1a1a1; float:left;}
+.price_btm table tr{padding:0px; margin:0px; float:left;}
+.price_btm table tr.td_bg td{background-color:#fff;}
+.price_btm table td h2{background-color:#bfbfbf; font:normal 13px Arial, Helvetica, sans-serif; line-height:24px; width:80px; margin:0 0 0 15px; float:left;}
+
+.price_btm h3{background:url(../images/pricing_bg.png) repeat-x left top; width:960px; padding:5px 0 4px 20px; color:#0f0000; letter-spacing:1px; font:normal 19px Arial, Helvetica, sans-serif; line-height:24px; height:30px; margin:33px 0 0 0;}
+.pricing_left{width:400px; float:left;}
+.pricing_left h4{background-color:#005c83; font:normal 15px Arial, Helvetica, sans-serif; line-height:24px; width:200px; padding:7px 0 6px 15px; float:left; color:#fff; margin:37px 0 1px 0;}
+.pricing_left h5{background-color:#1f89b5; font:normal 15px Arial, Helvetica, sans-serif; line-height:24px; width:200px; padding:7px 0 7px 15px; float:left; color:#fff;}
+
+.pricing_right{width:580px; float:left; margin:-2px 0 0 0px; padding:0px;}
+
+.price_btm table.P_right_table{width:580px; margin:0px;}
+.price_btm table.P_right_table th{width:120px; margin-bottom:1px; padding:10px 0 10px 0; border-right:1px solid #fff; border-bottom:0px; border-top:0px; color:#242424; font:normal 13px Arial, Helvetica, sans-serif; float:left; background-color:#f2f2b6;}
+.price_btm table.P_right_table th.PRT_color2,.price_btm table.P_right_table td.PRT_color2{background-color:#88d1ff;}
+.price_btm table.P_right_table th.PRT_color3,.price_btm table.P_right_table td.PRT_color3{background-color:#d1d1d1;}
+.price_btm table.P_right_table th.PRT_color4,.price_btm table.P_right_table td.PRT_color4{background-color:#ffda00;}
+.price_btm table.P_right_table td{width:120px; padding:6px 0 6px 0; font:normal 13px Arial, Helvetica, sans-serif; text-align:center; color:#242424; background-color:#f2f2b6; border:0px; float:left; margin:0 1px 1px 0;}
+.price_btm table.P_right_table td h2{background-color:#fff; font:normal 13px Arial, Helvetica, sans-serif; line-height:24px; width:80px; margin:0 0 0 15px; float:left; text-align:left; padding:0 0 0 10px;}
+
+.price_btm table.P_right_table th.edit_pen,.price_btm table.P_right_table td.edit_pen{width:34px; padding:0px; border-bottom:0px;}
+.price_btm table.P_right_table th.edit_pen img,.price_btm table.P_right_table td.edit_pen img{float:left;}
+
+.price_btm input { color: #0f0000; text-align: center; border: 1px solid #9a9a9a; background-color: #bfbfbf; width: 100px; height: 22px; }
+
+.special_price h4{font:normal 15px Arial, Helvetica, sans-serif; color:#000000; line-height:24px; float:left; margin:20px 0 5px 10px;}
+.special_price input{margin:48px 0 0 15px; float:left; color:#0f0000; font:normal 19px Arial, Helvetica, sans-serif; padding:6px 0 6px 10px; border:1px solid #9a9a9a;}
+
+.from_to{width:500px; float:left;}
+.from_to label{margin:25px 0 7px 10px; float:left; color:#0f0000; font:normal 14px Arial, Helvetica, sans-serif; padding:0px 0 0px 0px; width:100px;}
+
+/* ====================================================== */
+div.sort { width:400px; height: 50px; float: right; text-align: center; font-weight: bold; vertical-align: middle; }
+div.item { inherit: none; height: 35px; background-color: #ffb400; width: 100px; border:1px solid #a1a1a1; float: left; color: #000000; font-size: 14px; vertical-align: middle; padding: 20px 0 0 0; margin: 0px;  }
+
+input.price { inherit: none; text-align: left; width: 50px; background-color: #b4b4b4; height: 25px;  }
+input.save { margin:5px 0 0  0px;	background:url(../images/savechanges.png) no-repeat left top; width:130px; height:29px; float:left; border:0px; cursor:pointer; }
+input.save:hover { background:url(../images/savechanges_hover.png) no-repeat left top; width:130px; height:29px; float:left; border:0px; }
+
+.setting { 	font-family: arial;	font-size: 12px; font-weight:bold; color: #333; }
+.header_text{ font-family:arial; font-size:18; color:#F60; font-weight:bold; }
+.header_color{ background:#333; }
+.text_field{ height:50px; width:250px; font-family:arial; font-size:12px; font-weight:bold; background:#9C0; font-color:#333; }
+.button{ background:#F60; width:200px; height:35px; font:arial; color:#333; font-size:14px; font-weight:bold; }
+
+
+#mask { position:absolute; z-index:9000; background-color:#000; display:none; }
+#move .window {   position:absolute;   width:440px;   height:200px;   display:none;   z-index:9999;   padding:20px; border: 5px solid #c9c9c9; }     
+/* Customize your modal window here, you can add background image too */
+#move #movecategory {   width:500px; height:400px; background: #fff; } 
+
+#edit .window { position:absolute;   width:440px;   height:200px;   display:none;   z-index:9999;   padding:20px; border: 5px solid #c9c9c9; }
+#edit #category { width: 500px; height: 400px; background: #fff; }
+#editcategory { padding: 0; width: 470px; }
+#editcategory div.addcatHeader { width: 100%; background-color: #757575; padding: 15px; text-align: left; font-size: 14px; font-weight: bold; color: #fff; margin-bottom: 1px; }
+#editcategory div.addcatBody { width: 100%; background-color: #efefef; padding: 15px; text-align: left; font-size: 14px; color: #fff; margin-bottom: 1px; overflow: auto; color: #000; }
+#editcategory div.addcatBody p { float: left; padding-top: 5px; width: 100px; font-size: 12px; }
+#editcategory div.addcatBody input { float: left; border: 1px solid #bbb; padding: 5px; width: 300px; }
+#editcategory div.addcatBody select { float: left; border: 1px solid #bbb; padding: 5px; width: 300px; }
+#editcategory div.addcatBody img { width: 470px; }
+#editcategory input.impbutton { padding: 10px; margin: 5px 10px 0 0; background-color: #ff6600; border: 1px solid #bbb; font-weight: bold; cursor: pointer; }
+#editcategory input.impbutton:hover { background-color: #757575; }
+
+img.cmsaddnew { width: 20px; cursor: pointer; margin-right: 10px; }
+
+td.cmsback { text-align: left !important; background-color: #FFFFFF !important; padding: 10px !important; width: 50%; }
+td.cmsback input { width: 100%;  border: 1px solid #bebebe; height: 20px !important; }
+td.cmsback textarea { width: 100%; height: 100px; }
+
+input.savebutton { width: 120px; height: 25px; background-color: #e7e7e7; border: 1px solid #bebebe; }
+
+
+/* :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+
+table.imprintOptions { width: 855px; margin-left: 100px; }
+
+table.imprintOptions td { border-bottom: 1px solid #ebebeb; }
+table.imprintOptions td.impheader { font-weight: bold;  }
+table.imprintOptions td.impLocation { padding-left: 20px; width: 90px; vertical-align: top; }
+table.imprintOptions td.impType { width: 250px; }
+table.imprintOptions td.impPrice { width: 100px; }
+table.imprintOptions td.noBtmBdr { border: none; }
+table.imprintOptions td.right { text-align: right; padding-right: 5px; }
+
+table.imprintOptions img { width: 30px; height: 30px; }
+
+
+/* :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */

@@ -1,0 +1,259 @@
+/** Imprint Css **/
+
+.imprint-design a.imprint_continue {
+	background:url("../images/contibue.gif") no-repeat center 0;
+	display: block;
+    height: 47px;
+    text-decoration: none;
+    overflow: hidden;
+    text-decoration: none;
+    text-indent: 100%;
+    width: 170px;
+    float:right;
+}
+.imprint-design a.imprint_back {
+	background:url("../images/back.gif") no-repeat center 0;
+	display: block;
+    height: 47px;
+    text-decoration: none;
+    overflow: hidden;
+    text-decoration: none;
+    text-indent: 100%;
+    width: 170px;
+    float:right;
+    margin-right: 5px;
+}
+.imprint-design input.submit_continue {
+	background:url("../images/contibue.gif") no-repeat center 0;
+	display: block;
+    height: 47px;
+    text-decoration: none;
+    overflow: hidden;
+    text-decoration: none;
+    text-indent: 100%;
+    width: 170px;
+    float:right;
+    border:none;
+}
+
+
+.imprint-design {
+	width:961px;
+	text-align:center;
+	margin:0 auto;
+	background: #fff;
+	margin:10px 0 0 8px;
+}
+#style-table {
+	float:left;
+}
+
+#style-table .frontdesign {
+	width:235px;
+	height:250px;
+	border:0;
+	display:block;
+	background:url("../images/front.png") no-repeat center 0;
+	float:left;
+	margin-right:5px
+}
+
+
+#style-table .backdesign {
+	width:235px;
+	height:250px;
+	border:0;
+	display:block;
+	background:url("../images/back.png") no-repeat center 0;
+	float:left;
+	margin-right:5px
+}
+
+.imprint-front .backdesign {
+	width:235px;
+	height:250px;
+	border:0;
+	display:block;
+	background:url("../images/back.png") no-repeat center 0;
+	float:left;
+	margin-right:5px
+}
+
+#style-table .shortdesign {
+	width:235px;
+	height:250px;
+	border:0;
+	display:block;
+	background:url("../images/short.png") no-repeat center 0;
+	float:left;
+	margin-right:14px
+}
+
+.imprint-front .shortdesign {
+	width:235px;
+	height:250px;
+	border:0;
+	display:block;
+	background:#ffffff url("../images/short.png") no-repeat center 0;
+	float:left;
+	margin-right:14px
+}
+
+#style-table .sockdesign {
+	width:235px;
+	height:250px;
+	border:0;
+	display:block;
+	background:url("../images/socks.png") no-repeat center 0;
+	float:left;
+	margin-right:14px
+}
+
+.imprint-front .sockdesign {
+	width:235px;
+	height:250px;
+	border:0;
+	display:block;
+	background:#ffffff url("../images/socks.png") no-repeat center 0;
+	float:left;
+	margin-right:14px
+}
+
+.imprint-design .design-break {
+	clear:both;
+	height:10px;
+	background:#000;
+	margin:5px 0;
+}
+
+.imprint-design .header-style {
+	clear:both;
+	margin:10px 0;
+	color:#fff;
+	text-align:left;
+	font-size:14px;
+	font-weight:bold;
+	padding:5px 0px 5px 5px;
+	background:#ff0000;
+}
+
+
+#style-table .first {
+	margin-left:0px;
+}
+#style-table .last {
+	margin-right:0px;
+}
+#style-table .active{
+    float: left;
+    margin-left: 50px;
+    position: relative;
+    top: 80px;
+}
+#accordin {
+	width:100%;
+}
+#accordin a {
+	display:block;
+	background:#ff0000 url(../images/i_asc_arrow.gif) 98% 50% no-repeat;
+	color:#fff;
+	padding:5px 0px 5px 8px;
+	width:100%;
+	font-weight:bold;
+	text-align:left;
+	text-transform:uppercase;
+}
+#accordin a.selected {
+	display:block;
+	background:#ff0000 url(../images/i_desc_arrow.gif) 98% 50% no-repeat;
+	color:#fff;
+	padding:5px 0px 5px 8px;
+	width:100%;
+}
+.imprint_grid_header{
+	background-color:#ff0000;
+	color:#fff;
+	padding:5px 0;
+	border-radius:8px 8px 0 0
+}
+.color_grid {
+	width:50%;
+	float:right;
+	margin:5px;
+}
+.imprint_color_header {
+	background-color:#ff0000;
+	color:#fff;
+	padding:5px 0 5px 8px;
+	width:100%;
+	text-align: left;
+}
+
+.imprint_name_header {
+	background-color:#ff0000;
+	color:#fff;
+	padding:5px 0 5px 8px;
+	text-align: left;
+}
+
+.imprint_price {
+	float:left;
+	width:44%;
+	margin:5px;
+	font-weight:bold;
+}
+.qty_col1 {
+	background-color:#f1f1af;
+	color:#000;
+	text-align:center;
+}
+.qty_col2 {
+	background-color:#88d1ff;
+	color:#000;
+	text-align:center;
+}
+.qty_col3 {
+	background-color:#d1d1d1;
+	color:#000;
+	text-align:center;
+}
+.qty_col4 {
+	background-color:#ffda00;
+	color:#000;
+	text-align:center;
+}
+
+#accordin .content {
+	background-color:#e5e5e5;
+	color:#000;
+	width:100%;
+	padding:5px 0px 5px 4px;
+	border:2px solid #ff0000;
+	border-top:none;
+}
+
+.imprint-content {
+	background-color:#e5e5e5;
+	color:#000;
+	width:97%;
+	padding:5px 0px 5px 4px;
+	border:2px solid #ff0000;
+	border-top:none;
+}
+
+.imprint_td {
+	background-color:#e5e5e5;text-align:center;width:245px;height:260px;
+}
+
+.imprint-front {
+	width:235px;
+	height:250px;
+	border:0;
+	display:block;
+	background:url("../images/front.png") no-repeat center 0;
+	margin:5px;
+}
+
+#accordin a.selected span {
+	
+}

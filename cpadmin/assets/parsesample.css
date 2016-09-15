@@ -1,0 +1,73 @@
+
+h1.Red
+{
+	color:#F00;
+	font-size: 1.8em;
+	font-weight:normal;
+	padding-top:5px;
+	padding-bottom:5px;
+}
+
+h2.Gray
+{
+	color:#36C;
+	font-size: 1.5em;
+	font-weight:normal;
+	padding-top:5px;
+	padding-bottom:5px;
+}
+
+h3.Blue
+{
+	color:#36C;
+	font-size: 1.1em;
+	font-weight:normal;
+	padding-top:5px;
+	padding-bottom:5px;
+}
+
+span.markYellow { background-color: yellow; }
+span.markGreen { background-color: lime; }
+
+a.green
+{
+	color:#739E39;
+}
+
+table.grey
+{
+	background-color : #F5F5F5;
+}
+
+table.grey th
+{
+	background-color : #DDD;
+}
+
+list{
+	list-style-type : square;
+	margin-left:30px !important;
+	font-family:arial;
+	size:12px;
+}
+Product.Title{
+	font-family:arial;
+	size:16px;
+	font-weight:bold;
+	color:#F00;
+}
+
+Product.Description{
+	font-family:arial;
+	size:13px;
+	color:#000;
+	text-align:justify;
+	padding-bottom:5px;
+}
+
+point{
+list-style:square;
+margin-left:30px;
+font-family:Arial, Helvetica, sans-serif;
+font-size:12px;
+}

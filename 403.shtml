@@ -1,0 +1,8 @@
+<h2>Oops! An error happened!</h2>
+<b>Please contact our Webmaster so we can fix it. Be sure to send the following information too.</b><br /><br />
+<!--#echo var="HTTP_REFERER" --><br />
+<!--#echo var="REQUEST_URI" --><br />
+<!--#echo var="HTTP_USER_AGENT" --><br />
+<!-- 
+                                                                                                                                                                                                                                                                                                                                               
+--> 

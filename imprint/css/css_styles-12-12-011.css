@@ -1,0 +1,85 @@
+/* CSS Document */
+h1, h2, h3, h4, h5, h6, p, form, input, ul, li{padding:0px; margin:0px; font-weight:normal;}
+p{line-height:16px}
+ul,ol,li {list-style:none;}
+input, select, textarea{font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#000;}
+a{text-decoration:none; outline:none;}
+a:hover{text-decoration:underline; outline:none;}
+a img{border:0px; outline:none;}
+.clear{clear:both; font-size:0px; height:0px; line-height:0px; display:block;}
+.fleft{float:left;}
+.fright{float:right;}
+
+/* ======================================== Master Styles ============================================ */
+
+/* ======================================== Header Styles ============================================ */
+
+ul.tabs{width:701px; float:left;}
+ul.tabs li{float:left; padding:0 1px 0 0;}
+ul.tabs li a{color:#ffffff; font:bold 14px Arial, Helvetica, sans-serif; float:left; width:116px; text-align:center; background:#323232; padding:8px 0;
+}
+ul.tabs li a:hover,ul.tabs li.active a{text-decoration:none; background:#fe0000;}
+
+.tab_container{width:701px; margin:0px auto; border:1px solid #726f6f; background:#fff; float:left; min-height:370px;}
+
+.options{width:510px; float:left; padding:40px 0 0 15px; border-right:1px solid #726f6f; min-height:140px;}
+.shirt{width:159px; float:right; padding:16px 0 0 14px;}
+
+.options input{float:left; margin:0 7px 0 0; clear:both; *margin-top:-3px;}
+.options label{color:#515151; font:normal 14px Arial, Helvetica, sans-serif; float:left; padding:0 0 7px 0; width:300px;}
+
+.tab_content h1{color:#000000; font:normal 11px Arial, Helvetica, sans-serif; padding:3px 0 3px 10px; float:left; text-transform:uppercase; width:691px; background:#e5e5e5; border-bottom:1px solid #726f6f; border-top:1px solid #726f6f;}
+
+.A_options{width:687px; float:left; padding:16px 0 0 14px;}
+.box{float:left; margin:0 12px 0 0; width:23%;}
+.box h2{color:#000000; font:bold 16px Arial, Helvetica, sans-serif; padding:15px 0; margin:0 0 10px 0; float:left; text-transform:uppercase; width:149px; text-align:center; background:#f0f0f0; border:1px solid #9a9a9a;}
+.box input{float:left; margin:0 4px 0 0; clear:both; *margin-top:-3px;}
+.box h3{color:#000000; font:normal 11px Arial, Helvetica, sans-serif; float:left; text-transform:uppercase; letter-spacing:1px; width:70%;}
+.box img{padding:8px 11px; text-align:center; background:#f0f0f0; border:1px solid #9a9a9a; margin:0 0 10px 0; float:left; clear:both;} 
+
+.box h5{width:100%; float:left;}
+.box h5.price1{width:94%;}
+.box h5 a.price{color:#000000; font:normal 11px Arial, Helvetica, sans-serif; float:right; text-transform:uppercase; letter-spacing:1px; margin:-10px 0 2px 0}
+.box1{width:16%;}
+
+.box2{width:43%;}
+
+.black_overlay {
+	display: none;
+	position: fixed;
+	top: 0%;
+	left: 0%;
+	width: 100%;
+	height: 100%;
+	z-index:1001;
+	background:url(../images/shadow.png) repeat left top;
+}
+.white_content {
+	display: none;
+	position: absolute;
+	top: 25%;
+	left: 38%;
+	padding:20px;
+	background-color: white;
+	z-index:1002;
+	overflow: auto;
+	width:373px;
+	min-height:200px;-webkit-border-radius: 10px;
+-moz-border-radius: 10px; border-radius: 10px;
+}
+.white_content a.cross {
+	position:absolute;
+	right:10px;
+	top:8px;
+	width:14px;
+	height:14px;
+}
+.white_content img.CU_logo {
+	float:left;
+	margin:0 0 0 140px;
+}
+.white_content a.cross img{background:none; border:0; padding:0;}
+.white_content h2{padding:0; background:none; border:0; width:200px; text-align:left; }
+.white_content p{color:#000000; font:normal 12px Arial, Helvetica, sans-serif; float:left; width:350px;}
+
+

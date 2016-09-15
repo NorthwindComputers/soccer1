@@ -1,0 +1,623 @@
+<?php
+/**************************************
+ * customer account info include file
+ *
+ * version: 1.4.7
+ * updated: 09 September 2014
+ * by: Richard Tuttle
+ *
+ **************************************/
+ 
+require_once '../cpadmin/includes/db.php';
+session_start();
+
+if($_POST["type"] == "logout") {
+	unset($_SESSION["email"]);
+}
+
+// check login
+if($_POST["type"] == "chkLogin") {
+	if (!empty($_REQUEST['captcha'])) {
+    	if (empty($_SESSION['captcha']) || trim(strtolower($_REQUEST['captcha'])) != $_SESSION['captcha']) {
+		    $err = "Invalid Code";
+	    } else {
+			$email = $_POST["email"];
+			$pass = $_POST["pass"];
+			$sql_chk = "SELECT * FROM customers WHERE EmailAddress='$email' AND Password='$pass' LIMIT 1";
+			$result_chk = mysql_query($sql_chk) or die("Customer Login Error: " . mysql_error());
+			$num_chk = mysql_num_rows($result_chk);
+			if ($num_chk > 0) {
+				$_SESSION["email"] = $email;
+				echo "Loggedin";
+			} else {
+				echo "error";
+			}
+			mysql_close($conn);
+		exit();
+		}
+	}
+}
+
+// forgot password
+if ($_POST["type"] == "forgot") {
+?>
+    <form action="" method="post" style="margin-left: 40px;">
+    <table cellpadding="5" cellspacing="1" width="400px">
+    <tr>
+        <td style="font-weight: bold; font-size: 12px;">Email Address:</td>
+        <td><input type="text" class="address" id="email" name="email"/></td>
+    </tr>
+    <tr>
+		<td></td>
+		<td><img src="./captcha/captcha.php" id="captcha" /><br/><a href="#" onclick="document.getElementById('captcha').src='./captcha/captcha.php?'+Math.random(); document.getElementById('captcha-form').focus();" id="change-image"><small>(security code not readable? click here to change text)</small></a></td>
+	</tr>
+	<tr>
+		<td style="font-weight: bold; font-size: 12px;">Enter security code:</td>
+		<td><input type="text" name="captcha" id="captcha-form" class="address" /></td>
+	</tr>
+<?php if($_POST["err"] != '') { ?>
+    <tr>
+        <td colspan="2" class="err"><?=$_POST["err"];?></td>
+    </tr>
+<?php } ?>
+    <tr>
+        <td colspan="2"><input type="submit" class="button" style="float: right; margin-right: 20px; width: 150px;" id="btnForgot" name="btnForgot" value="Request Password" /></td>
+    </tr>
+    </table>
+    </form>
+<?php
+	mysql_close($conn);
+	exit();
+}
+
+// user login
+if ($_POST["type"] == "login") {
+	if ($_POST["CG"] != '') {
+		$cg = $_POST["CG"];
+		$sql_group = "SELECT id, GroupName FROM customer_group WHERE GroupCode='$cg' LIMIT 1";
+		$result_group = mysql_query($sql_group) or die("Group Error: " . mysql_error());
+		$row_group = mysql_fetch_assoc($result_group);
+		$mess = "Welcome to the ".$row_group["GroupName"]." VIP Purchasing Group";
+	}
+?>
+	<div style="width:750px; margin:10px 0px 10px 5px;background:none;">	
+		<div style="float:left;width:370px;margin-right:5px;border:1px solid #AFAFAF;"><h1 style="background-color:#AFAFAF;margin-top:0px;background:url('../images/price_range_bg.png') repeat-x scroll left top transparent;color:#0F0E0E;font:14px Arial,Helvetica,sans-serif;padding:6px 0 8px 13px">Registered Customers &amp; VIP Members</h1>
+		<form action="" method="post" style="padding: 5px 4px;">
+		<table cellpadding="3" cellspacing="1" width="100%">
+<?php 
+	if ($cg != '') {
+?>
+		<tr>
+			<td style="text-align: center; color: #ff0000; font-size: 14px; font-weight: bold;" colspan="2"><?=$mess;?></td>
+		</tr>
+<?php
+	}
+?>
+		<tr>
+			<td style="font-weight: bold; font-size: 12px;">Email Address:</td>
+			<td><input type="hidden" id="CustomerGroup" name="CustomerGroup" value="<?=$cg;?>" /><input type="text" class="address" style="width: 200px;" id="email" name="email" /></td>
+		</tr>
+		<tr>
+			<td style="font-weight: bold; font-size: 12px;">Password:</td>
+			<td><input type="password" class="address" style="width: 200px;" id="password" name="password" /></td>
+		</tr>
+		<tr>
+			<td colspan="2"><input type="submit" class="button" style="float: right;margin-right: 10px;size: 0.75em;" id="btnLogin" name="btnLogin" value="Login" /><a href="myaccount.php?p=forgot" title="Forgot Your Password?">Forgot or Create a Password?</a></td>
+		</tr>
+		</table>
+		</form></div>
+		<div style="float:right;width:370px;border:1px solid #AFAFAF;"><h1 style="background-color:#AFAFAF;margin-top:0px;background:url('../images/price_range_bg.png') repeat-x scroll left top transparent;color:#0F0E0E;font:14px Arial,Helvetica,sans-serif;padding:6px 0 8px 13px">New Customers</h1><p style="text-align:justify;padding: 0px 4px;">By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p><br />
+	<div style="clear:both;padding: 0px 4px;"><a title="Create an Account" href="myaccount.php?p=register&CG=<?=$cg;?>">Create an Account</a></div><br /></div>
+</div>	
+<?php
+	mysql_close($conn);
+	exit();
+}
+
+// REGISTER ACCOUNT
+if ($_POST["type"] == "register") {
+	if ($_POST["CG"] != '') {
+		$cg = $_POST["CG"];
+		$sql_group = "SELECT id, GroupName FROM customer_group WHERE GroupCode='$cg' LIMIT 1";
+		$result_group = mysql_query($sql_group);
+		$row_group = mysql_fetch_assoc($result_group);
+		$mess = "Welcome to the ".$row_group["GroupName"]." VIP Purchasing Group";
+	}		
+?>
+		<script type="text/javascript" src="/js/jquery.validate.min.js"></script>
+		<style>
+		label { 
+			width: 10em; 
+			float: left; 
+		}
+		label.error { 
+			padding: 10px 10px 10px 10px;
+			margin: 10px 0;
+			border: solid 1px; 
+			border-color: #DF8F8F;
+			background-color: #FFDCDC;
+			font-size: 1em;
+		}
+		p { clear: both; }
+		.submit { margin-left: 12em; }
+		em { 
+			font-weight: bold; 
+			padding-right: 1em; 
+			vertical-align: top; 
+		}
+		</style>
+		<script type="text/javascript">
+$("#register").validate({
+    			rules: {
+    				'Password': {
+    					minlength: 5,
+    					required: true
+    				}, 
+    				'ConfirmPassword': {
+    					minlength: 5,
+    					equalTo: "#Password",
+    					required: true
+    				},
+    				'FirstName': {
+    					required: true
+    				},
+    				'LastName': {
+    					required: true
+    				},
+    				'EmailAddress': {
+    					required: true,
+    					email: true
+    				},
+    				'ReEmailAddress': {
+    					required: true,
+    					email: true,
+    					equalTo: "#EmailAddress"
+    				},
+    				'Telephone': {
+    					required: true,
+    					digits: true
+    				},
+    				'BillingAddress': {
+    					required: true
+    				},
+    				'BillingCity': {
+    					required: true
+    				},
+    				'BillingState': {
+    					required: true
+    				},
+    				'BillingZip': {
+    					required: true
+    				}
+    			}
+    });
+</script>
+		<form action="" method="post" id="register">
+		<fieldset>
+		<table cellpadding="0" cellspacing="5" style="margin-left: 50px;">
+		<?php if($cg != '') { ?>
+		<tr>
+			<th colspan="2"><font color="red"><h1><?php echo $mess; ?></h1></font></th>
+		</tr>
+		<tr>
+			<td style="text-align: center; font-weight: bold;" colspan="2">If you already have an account please click here to login:<br/><input type="button" class="button" value="Login" onClick="window.location='myaccount.php?p=login&CG=<?=$cg;?>'" /><br /><br /><br /><br /></td>
+		</tr>
+		<?php } ?>
+		<tr>
+			<td class="address"><font color="red">*</font>First Name</td>
+			<td class="address"><font color="red">*</font>Last Name</td>
+		</tr>
+		<tr>
+			<td><input type="hidden" id="CustomerGroup" name="CustomerGroup" value="<?=$cg;?>" /><input type="text" class="address" style="width: 200px;" id="FirstName" name="FirstName" /></td>
+			<td><input type="text" class="address" style="width: 200px;" id="LastName" name="LastName" /></td>
+		</tr>
+		<tr>
+			<td class="address"><font color="red">*</font>Email Address</td>
+			<td class="address"><font color="red">*</font>Re-Enter Email address</td>
+		</tr>
+		<tr>
+			<td><input type="text" class="address" style="width: 200px;" id="EmailAddress" name="EmailAddress" /></td>
+			<td><input type="text" class="address" style="width: 200px;" id="ReEmailAddress" name="ReEmailAddress" /></td>
+		</tr>
+		<tr>
+			<td class="address"><font color="red">*</font>Telephone</td>
+			<td class="address">Fax</td>
+		</tr>
+		<tr>
+			<td><input type="text" class="address" style="width: 200px;" id="Telephone" name="Telephone" /></td>
+			<td><input type="text" class="address" style="width: 200px;" id="Fax" name="Fax" /></td>
+		</tr>
+		<tr>
+				<td class="address"><font color="red">*</font>Password</td>
+				<td class="address"><font color="red">*</font>Confirm Password</td>
+			</tr>
+			<tr>
+				<td><input type="password" class="address" style="width: 200px;" id="Password" name="Password" /></td>
+				<td><input type="password" class="address" style="width: 200px;" id="ConfirmPassword" name="ConfirmPassword" /></td>
+			</tr>
+            <tr>
+            	<td class="address" colspan="2"><font color="red">*</font>Address</td>
+            </tr>
+            <tr>
+            	<td colspan="2"><input type="text" class="address" style="250px" id="BillingAddress" name="BillingAddress" /></td>
+            </tr>
+            <tr>
+            	<td colspan="2">
+                <table cellpadding="5" cellspacing="0">
+                <tr>
+                    <td class="address"><font color="red">*</font>City</td>
+                    <td class="address"><font color="red">*</font>State</td>
+                    <td class="address"><font color="red">*</font>Zipcode</td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="address" style="width: 200px;" id="BillingCity" name="BillingCity" /></td>
+                    <td><select class="address" id="BillingState" name="BillingState">
+                    <?php
+						$sql_states = "SELECT * FROM states ORDER BY State";
+						$result_states = mysql_query($sql_states);
+						while($row_states=mysql_fetch_array($result_states)) {
+							echo "<option value=\"$row_states[Abbreviation]\" $selected>$row_states[State]</option>";
+						}
+					?>
+                    </select></td>
+                    <td><input type="text" class="address" style="width: 75px;" id="BillingZip" name="BillingZip" /></td>
+                </tr>
+                </table></td>
+            </tr>
+            <tr>
+			  <td class="address" colspan="2">Company</td>
+		    </tr>
+			<tr>
+			  <td colspan="2"><input type="text" class="address" style="width: 200px;" id="Company" name="Company" /></td>
+		    </tr>
+			<tr>
+				<td colspan="2"><input type="submit" class="button" style="float: right; margin: 10px 40px;" id="btnRegister" name="btnRegister" value="Register" /><br /><em><font color="red">*</font> indicates a required field</em></td>
+			</tr>
+		</table>
+</fieldset>
+</form>
+<?
+	mysql_close($conn);
+	exit();
+}
+
+// Thank you page
+if($_POST["type"] == "thankyou") {
+	$sql_cus = "SELECT * FROM customers WHERE EmailAddress='".$_SESSION["email"]."' LIMIT 1";
+	$cus_object = mysql_query($sql_cus);
+	$cus_data = mysql_fetch_assoc($cus_object);
+?>
+        <table cellpadding="5" cellspacing="5">
+        <tr>
+            <td><h2>Thank you for registering</h2><p>&nbsp;</p><p>Thank you for registering with SoccerOne, your one-stop shop for all things soccer. Enjoy promotions and discounts ranging from 10% to 50% on all of your soccer needs from brand name companies, such as adidas, PUMA, and Under Armour. </p><p>&nbsp;</p><hr /><p>Please review your account by navigating the categories on your left or by clicking on “My Account” at the upper right corner. </p><p>&nbsp;</p>
+			<?php if (!is_null($cus_data['CustomerGroup']) && !empty($cus_data['CustomerGroup'])): ?>
+			<hr /><p>In addition, you can view and shop your affiliate program’s exclusive homepage and other unique offers and specials. Click on Group Name in the red bar under the Search Field.</p>
+			<?php endif; ?>
+			</td>
+        </tr>
+        </table>
+<?php
+	mysql_close($conn);
+	exit();
+}
+	
+if ($_POST["type"] == "accountinformation") {
+	$sql_acc = "SELECT * FROM customers WHERE EmailAddress='$_SESSION[email]' LIMIT 1";
+	$result_acc = mysql_query($sql_acc);
+	$row_acc = mysql_fetch_assoc($result_acc);
+	foreach ($row_acc as $key=>$value) {
+		$$key = stripslashes($value);
+	}	
+?>
+	<script type="text/javascript" src="/js/jquery.validate.min.js"></script>
+	<script type="text/javascript">
+$("#register").validate({
+    			rules: {
+    				'Password': {
+    					minlength: 5,
+    					required: true
+    				}, 
+    				'ConfirmPassword': {
+    					minlength: 5,
+    					equalTo: "#Password",
+    					required: true
+    				},
+    				'FirstName': {
+    					required: true
+    				},
+    				'LastName': {
+    					required: true
+    				},
+    				'EmailAddress': {
+    					required: true,
+    					email: true
+    				},
+    				'Telephone': {
+    					required: true,
+    					digits: true
+    				},
+    				'BillingAddress': {
+    					required: true
+    				},
+    				'BillingCity': {
+    					required: true
+    				},
+    				'BillingState': {
+    					required: true
+    				},
+    				'BillingZip': {
+    					required: true
+    				}
+    			}
+    });
+</script>
+	<p>All fields marked with <font color="red">*</font> are required.</p>
+	<form action="" method="post" id="register">
+	<table cellpadding="0" cellspacing="5" style="margin-left: 50px;">
+			<tr>
+				<td class="FirstName"><font color="red">*</font>First Name</td>
+				<td class="LastName"><font color="red">*</font>Last Name</td>
+			</tr>
+			<tr>
+				<td><input type="text" class="address" style="width: 200px;" id="FirstName" name="FirstName" value="<?=$FirstName;?>" /></td>
+				<td><input type="text" class="address" style="width: 200px;" id="LastName" name="LastName" value="<?=$LastName;?>" /></td>
+			</tr>
+			<tr>
+				<td class="Company">Company</td>
+				<td class="EmailAddress"><font color="red">*</font>Email Address</td>
+			</tr>
+			<tr>
+				<td><input type="text" class="address" style="width: 200px;" id="Company" name="Company" value="<?=$Company;?>"/></td>
+				<td><input type="text" class="address" style="width: 200px;" id="EmailAddress" name="EmailAddress" value="<?=$EmailAddress;?>"></td>
+			</tr>
+			<tr>
+				<td class="Telephone"><font color="red">*</font>Telephone</td>
+				<td class="Fax">Fax</td>
+			</tr>
+			<tr>
+				<td><input type="text" class="address" style="width: 200px;" id="Telephone" name="Telephone" value="<?=$Telephone;?>" /></td>
+				<td><input type="text" class="address" style="width: 200px;" id="Fax" name="Fax" value="<?=$Fax;?>" /></td>
+			</tr>
+			<tr>
+				<td class="Password"><font color="red">*</font>Password</td>
+				<td class="ConfirmPassword"><font color="red">*</font>Confirm Password</td>
+			</tr>
+			<tr>
+				<td><input type="password" class="address" style="width: 200px;" id="Password" name="Password" value="<?=$Password;?>" /></td>
+				<td><input type="password" class="address" style="width: 200px;" id="ConfirmPassword" name="ConfirmPassword" value="<?=$Password;?>" /></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+				<input type="submit" class="button" id="btnSaveAccountInfo" name="btnSaveAccountInfo" onClick="return chkRegister1();" value="Save / Update" />
+				<input type="hidden" name="btnSaveAccountInfo" value="Save / Update" />
+				
+		</td>
+	</tr>
+	</table>
+	</form>
+<?
+	mysql_close($conn);
+	exit();
+}
+	
+if ($_POST["type"] == 'addressbook') {
+		$sql_add = "SELECT * FROM customers WHERE EmailAddress='$_SESSION[email]' LIMIT 1";
+		$result_add = mysql_query($sql_add);
+		$row_add = mysql_fetch_assoc($result_add);
+		
+		foreach($row_add as $key=>$value) {
+			$$key = stripslashes($value);
+		}
+		?>
+        	<form action="" method="post" style="margin-left: 30px;" >
+            <table cellpadding="5" cellspacing="1" width="700px;">
+            	<tr>
+                	<td colspan="3" class="headerbar">Billing Address</td>
+                </tr>
+                <tr>
+                	<td colspan="3" class="address">Address:<br/>
+						<input type="text" class="address" style="width: 100%;" id="BillingAddress" name="BillingAddress" value="<?=$BillingAddress;?>" />
+					</td>
+                </tr>
+                <tr>
+                	<td class="address">
+                    	City:<br/><input type="text" class="address" id="BillingCity" name="BillingCity" value="<?=$BillingCity;?>" />
+                    </td>
+                    <td class="address">
+	                   	State:<br/>
+                        	<select class="address" id="BillingState" name="BillingState">
+                        		<?php
+									$sql_states = "SELECT * FROM states ORDER BY State";
+									$result_states = mysql_query($sql_states);
+									
+									while($row_states=mysql_fetch_array($result_states)) {
+										if($BillingState == $row_states["Abbreviation"]) {
+											$selected = ' Selected="Selected"';
+										} else {
+											$selected = '';
+										}
+										echo "<option value=\"$row_states[Abbreviation]\" $selected>$row_states[State]</option>";
+									}
+								?>
+                             </select>
+                    </td>
+                    <td class="address">
+                    	Zip:<br/><input type="text" class="address" id="BillingZip" name="BillingZip" value="<?=$BillingZip;?>" />
+                    </td>
+               </tr>
+           </table>
+           
+            <table cellpadding="5" cellspacing="1" width="700px;" style="margin-top: 30px;">
+            	<tr>
+                	<td colspan="3" class="headerbar">Shipping Address</td>
+                </tr>
+		<tr>
+			<td class="address">
+				First Name:<br/>
+				<input type="text" class="address" id="ShippingFirstName" name="ShippingFirstName" value="<?=$ShippingFirstName;?>" />
+			</td>
+			<td class="address">
+				Last Name:<br/>
+				<input type="text" class="address" id="ShippingLastName" name="ShippingLastName" value="<?=$ShippingLastName;?>" />
+			</td>
+			<td class="address"></td>
+		</tr>
+                <tr>
+                	<td colspan="3" class="address">Address:<br/><input type="text" class="address" style="width: 100%" id="ShippingAddress" name="ShippingAddress" value="<?=$ShippingAddress;?>" /></td>
+                </tr>
+                <tr>
+                	<td class="address">
+                    	City:<br/><input type="text" class="address" id="ShippingCity" name="ShippingCity" value="<?=$ShippingCity;?>" />
+                    </td>
+                    <td class="address">
+                    	State:<br/><select class="address" id="ShippingState" name="ShippingState">
+                        				<?php
+											$sql_states = "SELECT * FROM states ORDER BY State";
+											$result_states = mysql_query($sql_states);
+											
+											while($row_states=mysql_fetch_array($result_states)) {
+												if($ShippingState == $row_states["Abbreviation"]) {
+													$selected = ' Selected="Selected"';
+												} else {
+													$selected = '';
+												}
+												echo "<option value=\"$row_states[Abbreviation]\" $selected>$row_states[State]</option>";
+											}
+										?>
+                                    </select>
+                    </td>
+                    <td class="address">
+                    	Zip:<br/><input type="text" class="address" id="ShippingZip" name="ShippingZip" value="<?=$ShippingZip;?>" />
+                    </td>
+                </tr>
+            </table>
+            
+            <table cellpadding="5" cellspacing="1" width="500px;">
+            	<tr>
+                	<td><input type="submit" class="button" id="btnSaveAddress" name="btnSaveAddress" value="Save / Update" /></td>
+    </tr>
+    </table>
+    </form>
+<?php
+	mysql_close($conn);
+	exit();
+}
+
+// Order History display
+if ($_POST["type"]=="orderhistory") {
+?>
+	<table cellpadding="5" cellspacing="1" width="700px">
+	<tr>
+		<td style="font-weight: bold; font-size: 14px;">Order History</td>
+	</tr>
+	<tr>
+		<td>
+		<table cellpadding="5" cellspacing="0" width="100%">
+		<tr>
+			<td class="orderheader">Order#</td>
+			<td class="orderheader">Order Date</td>
+			<td class="orderheader">Product Name</td>
+			<td class="orderheader">Unit Price</td>
+			<td class="orderheader">Order Total</td>
+		</tr>
+<?php
+		$sql_orders = "SELECT id, OrderDate, GrandTotal FROM orders WHERE EmailAddress='$_SESSION[email]' ORDER BY OrderDate DESC";
+		$result_orders = mysql_query($sql_orders);
+		$c_num = 0;
+		while($row_orders = mysql_fetch_array($result_orders)) {
+			if($c_num == 0) {
+				$color = "#f2f2f2";
+				$c_num++;
+			} else {
+				$color = "#e7e7e7";
+				$c_num = 0;
+			}
+			$sql_items = "SELECT ProductName, Price FROM orders_items WHERE OrderID=$row_orders[id] AND Type!='C_Product'";
+			$result_items = mysql_query($sql_items);
+			$prodname = '';
+			$unitprice = '';
+			while($row_items = mysql_fetch_array($result_items)) {
+				$prodname .= $row_items["ProductName"]."<br/>";
+				$unitprice .= "$".number_format($row_items["Price"], 2)."<br/>";
+			}
+			$sql_imp = "SELECT SUM(ImprintPrice) AS TotalImp FROM imprint_orders WHERE OrderNumber=$row_orders[id]";
+			$result_imp = mysql_query($sql_imp);
+			$row_imp = mysql_fetch_assoc($result_imp);
+			if($row_imp["TotalImp"] > 0) {
+				$prodname .= "Imprint<br/>";
+				$unitprice .= "$".number_format($row_imp["TotalImp"], 2)."<br/>";
+			}
+?>
+		<tr>
+			<td class="orderitems" style="background-color: <?=$color;?>;"><?=$row_orders["id"];?></td>
+			<td class="orderitems" style="background-color: <?=$color;?>;"><?=$row_orders["OrderDate"];?></td>
+			<td class="orderitems" style="background-color: <?=$color;?>;"><?=$prodname;?></td>
+			<td class="orderitems" style="background-color: <?=$color;?>;"><?=$unitprice;?></td>
+			<td class="orderitems" style="background-color: <?=$color;?>;"><?="$".number_format($row_orders["GrandTotal"], 2);?></td>
+		</tr>
+<?php
+		}
+?>
+		</table></td>
+	</tr>
+	</table>
+<?php 
+		mysql_close($conn);
+		exit();
+	}
+	
+if($_POST["type"] == "vip") {
+	$sql_vip = "SELECT Status, VIPNum, VIPDate, VIPLevel, VIPExpDate FROM customers WHERE EmailAddress='$_SESSION[email]' LIMIT 1";
+	$result_vip = mysql_query($sql_vip);
+	$row_vip = mysql_fetch_assoc($result_vip);
+
+	if ($row_vip["Status"] == "VIP") {
+		if ($row_vip["VIPLevel"] == '' || $row_vip["VIPLevel"] == 0) {
+			$level = 1;				
+		} else {
+			$level = $row_vip["VIPLevel"];
+		}
+			
+		$sql_level = "SELECT level FROM viplevels WHERE id=$level LIMIT 1";
+		$result_level = mysql_query($sql_level);
+		$row_level = mysql_fetch_assoc($result_level);
+	?>
+        <table cellpadding="5" cellspacing="0" style="margin-left: 20px;">
+        <tr>
+            <td style="border-right: 5px solid #bebebe; font-weight: bold; width: 200px; background-color: #f2f2f2;">Your VIP Number</td>
+            <td style="font-weight: bold; padding-left: 10px; background-color: #f2f2f2; width: 200px;">Expiration Date</td>
+            <td style="font-weight: bold; padding-left: 10px; background-color: #f2f2f2; width: 200px;">VIP Level</td>
+        </tr>
+        <tr>
+            <td style="border-right: 5px solid #bebebe; font-size: 16px; height: 70px; font-weight: bold; vertical-align: top; color: #ff3300;"><?=strtoupper($row_vip["VIPNum"]);?></td>
+            <td style="padding-left: 10px; font-size: 16px; height: 70px; font-weight: bold; vertical-align: top; color: #FF3300">
+    <?php 
+    		$today = date('Y-m-d');
+    		if ($row_vip["VIPExpDate"] < $today) {
+    			$expired = "yes";
+    		}
+			$date = strtotime($row_vip["VIPExpDate"]);
+			echo date('m/d/Y', $date);
+	?></td>
+            <td style="padding-left: 10px; font-size: 16px; height: 70px; font-weight: bold; vertical-align: top; color: #FF3300"><span style="border-left: 5px solid #bebebe; font-size: 16px; height: 70px; font-weight: bold; vertical-align: top; color: #ff3300;"> &nbsp;&nbsp;<?=strtoupper($row_level["level"]);?></span></td>
+        </tr>
+        </table>
+	<?php
+		} else {
+	?>
+        <table cellpadding="5" cellspacing="0" style="margin-left: 20px;">
+        <tr>
+            <td style="font-weight: bold;">You are currently not a VIP Member.<br /><a href="details.php?id=VIP&exp=no">Click here to become a VIP</a></td>
+        </tr>
+        </table>
+	<?php
+		}
+		
+		if (($_POST["expired"] == "yes") || ($expired == "yes")) {
+			echo '<table cellpadding="5" cellspacing="0" style="margin-left: 20px;"><tr><td style="font-weight: bold;"><h3>We are sorry but your VIP Member account has expired!</h3><br />Please consider renewing today to continue to get the great discounts.<br /><br /><p><b><a href="details.php?id=VIP&exp=yes">RENEW TODAY</a></b></p></td></tr></table>';
+		}
+		
+		mysql_close($conn);
+		exit();
+	}
+?>

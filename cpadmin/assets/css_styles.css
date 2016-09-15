@@ -1,0 +1,355 @@
+/* CSS Document */
+
+body{margin:0px; padding:0px; font-family:Arial, Helvetica, sans-serif; font-size:12px; background:url("../images/mainbg.gif") repeat center 0;}
+.wrapper{margin:0px; padding:0px; font-family:Arial, Helvetica, sans-serif; font-size:12px; background:url("../images/mainbg.gif") no-repeat center 0;}
+
+h1, h2, h3, h4, h5, h6, h7, p, form, input, ul, li{padding:0px; margin:0px; font-weight:normal;}
+p{line-height:16px}
+ul,ol,li {list-style:none;}
+input, select, textarea{font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#000;}
+a{text-decoration:none; outline:none;}
+a:hover{text-decoration:underline; outline:none;}
+a img{border:0px; outline:none;margin-left to 3px;}
+.clear{clear:both; font-size:0px; height:0px; line-height:0px; display:block; background:#fff;}
+.fleft{float:left;}
+.fright{float:right;}
+
+/* ======================================== Master Styles ============================================ */
+.Master_div{width:1000px; margin:0px auto; background:url("../images/header_bg.gif") no-repeat center 0;}
+
+/* ======================================== Header Styles ============================================ */
+.header{width:980px; margin:0px auto; }
+.logo{width:93px; padding:80px 0 0 10px; float:left; margin-top:30px;}
+.logo1{width:199px; padding:39px 0 0 17px; float:left;}
+
+.header_R{width:700px; float:right;}
+.login{width:342px; float:right; margin:8px 0 10px 0;}
+.login label{font:normal 14px Arial, Helvetica, sans-serif; color:#3c3c3c; width:150px; float:left;}
+.login input{font:normal 14px Arial, Helvetica, sans-serif; color:#3c3c3c; border:0px; float:left; background:url(../images/home_input.png) no-repeat left top; width:126px; padding:7px 0 5px 10px; margin:0 13px 0 0;}
+.login input.go{text-transform:uppercase; background:none; width:30px; margin:5px 0 0 0px; padding:0px; cursor:pointer;}
+
+.search{width:365px; float:right; margin-right:10px;}
+.search ul{margin:0px;}
+.search li{list-style:none; padding:0 3px; float:left; color:#bf4f14;}
+.search li a{font:normal 13px Arial, Helvetica, sans-serif; color:#bf4f14;}
+.search input{font:normal 15px Arial, Helvetica, sans-serif; color:#3c3c3c; border:0px; float:left; background:url(../images/H_text_search.png) no-repeat left top; width:265px; padding:10px 0 9px 10px; margin:10px 0 0 0; margin-bottom:10px;}
+.search input.search_btn{background:url(../images/home_search.png) no-repeat left top; width:79px; padding:0px; cursor:pointer; height:36px;}
+
+.search div.specialnav { width: 350px; height: 30px; margin-top: 5px; background-image: url(../images/specialnav.png); }
+.search ul.specialnav { margin-left: 10px; }
+.search li.specialnav { list-style: none; padding: 6px 5px; float: left; color: #FFFFFF; }
+.search li.specialnav a{ font: normal 14px Arial, Helvetica, sans-serif; color: #FFFFFF; }
+
+/* ======================================== Container Styles ============================================ */
+.container{width:994px; margin:0px auto; padding:0 0 150px 0;}
+.container1{width:996px; margin:0px auto; padding:0 0 0px 0; z-index:5; position:relative;}
+.navigation{width:961px; margin:10px 0 0px 8px; float:left;}
+.navi_L{width:9px; background:url(../images/home_nav_L.png) repeat left top; float:left; height:43px;}
+.navi_C{width:943px; background:url(../images/home_nav_C.png) repeat-x left top; float:left; height:43px;}
+.navi_C ul{margin:0px;}
+.navi_C li{list-style:none; float:left; color:#bf4f14;}
+/*.navi_C li a{font:normal 15px Arial, Helvetica, sans-serif; color:#fff; padding:13px 19px; float:left;} */
+
+
+.navi_R{width:9px; background:url(../images/home_nav_R.png) repeat left top; float:left; height:43px;}
+
+.banner_box{float:left; margin:10px 6px 0 8px; width:668px;}
+.banner_T{width:666px; background:url(../images/banner_T.png) no-repeat left top; height:9px;}
+.banner_C{width:666px; background:#1e1e1e none; height:281px; position:relative; z-index: -100;}
+.banner_C img{margin:20px 0 0 190px;}
+.left_arrow{position:absolute; top:80px; left:50px;}
+.left_arrow img,.right_arrow img{margin:0px;}
+.right_arrow{position:absolute; top:80px; right:50px;}
+
+.banner_C h1{font:bold 35px Arial, Helvetica, sans-serif; color:#fff; text-align:right; padding:0 20px 0 0;}
+.banner_B{width:666px; background:url(../images/banner_B.png) no-repeat left top; height:9px;}
+
+.advertisements{width:292px; float:left; margin:10px 0 0 0;}
+.vip_members{width:282px; height:156px; background:url(../images/soccerbanner_01.jpg) no-repeat left top; padding:30px 0 0 0;}
+.vip_members a{font:bold 14px Arial, Helvetica, sans-serif; color:#ee272a; margin:35px 0 0 0px; float:left; width:282px; text-align:center;}
+
+.daily_special{width:282px; height:78px; background:url(../images/soccerbanner_02.jpg) no-repeat left top; margin:8px 0; padding:48px 0 0 0;}
+.daily_special a,.customer_serv a{font:bold 14px Arial, Helvetica, sans-serif; color:#1e1e1e; margin:18px 0 0 0px; float:left; width:282px; text-align:center;}
+
+.customer_serv{width:282px; height:86px; background:url(../images/CS_bg.png) no-repeat left top; margin:0px 0; padding:25px 0 0 0;}
+.customer_serv h1{font:bold 35px Arial, Helvetica, sans-serif; color:#ecebec; margin:0px 0 0 0px; float:left; width:282px; text-align:center; line-height:23px;}
+.customer_serv h1 span{font-size:15px;}
+/* ======================================== Soccer Frontent Browser Styles ============================================ */
+.header_R h6{font:bold 19px Arial, Helvetica, sans-serif; color:#202020;}
+.header_R span.need {font:bold 19px Arial, Helvetica, sans-serif; color:#ff0000; margin-right: 137px; }
+.header_R span.espanol {font:normal 16px Arial, Helvetica, sans-serif; color:#000000;}
+
+.browser_color{width:200px; background-color:#3c3c3c; float:left; margin:-10px 0 0px 8px; z-index:-1; position:relative; padding:0px 0 98px 0; height: 980px;}
+.browser_color h1{font:normal 14px Arial, Helvetica, sans-serif; color:#0f0e0e; background:url(../images/price_range_bg.png) repeat-x left top; padding:6px 0 8px 13px; margin-top: 10px;}
+.browser_color input{font:normal 15px Arial, Helvetica, sans-serif; color:#3c3c3c; border:0px; float:left; padding:7px 0 6px 10px; margin:12px 0 12px 10px;}
+.browser_color input.plus{background:url(../images/plus.png) no-repeat left top; cursor:pointer; width:35px; height:30px; margin:50px 0 0 0; padding:0px; float:left;}
+.browser_color select{background:url(../images/plus.png) no-repeat left top; cursor:pointer; width:10px; height:30px; margin:12px 0 0 0; padding:0px; float:left;}
+.browser_color option{background:url(../images/plus.png) no-repeat left top; cursor:pointer; width:10px; height:30px; margin:12px 0 0 0; padding:0px; float:left;}
+
+.browser_color ul.colors{margin:7px 0px 7px 7px;}
+.browser_color ul.colors li{list-style:none; float:left; margin:2px 3px 1px 2px;}
+.browser_color ul.colors li a{font:normal 14px Arial, Helvetica, sans-serif; color:#fff;}
+.browser_color ul.colors li img{border: 1px solid #fff;}
+.browser_color a { color: #fff; text-decoration: none; }
+.browser_color a:hover { color: #000; }
+
+.apparel_ul{width:200px;}
+.apparel_ul ul{margin:0px 0 0 0px;}
+.apparel_ul li{list-style:none; margin:0px; float:none;}
+.apparel_ul li a{font:normal 14px Arial, Helvetica, sans-serif; color:#fff; line-height:29px; width:185px; float:left; padding:2px 0 3px 15px; font-weight:bold;}
+.apparel_ul li a:hover, .apparel_ul li.app_sel a{background-color:#e7e7e7;}
+
+.browser_product{width:760px; float:left; padding:10px 0 0 0;}
+.brow_prod{width:180px; float:left; margin:0 0 0 10px; min-height:330px;}
+.brow_prod img{margin:10px 0 0 5px; width: 160px; height: 160px;}
+.brow_prod h1{font:bold 15px Arial, Helvetica, sans-serif; color:#0d51cf; width:180px; text-align:center; padding:0px 0 0 0;}
+.brow_prod h2{font:normal 12px Arial, Helvetica, sans-serif; color:#060b0f; width:180px; text-align:center; padding:5px 0 0 0; letter-spacing:0.3px;}
+.brow_prod h3{font:bold 14px Arial, Helvetica, sans-serif; color:#ff0000; width:180px; text-align:center; padding:5px 0 0 0;}
+.brow_prod h4{font:normal 11px Arial, Helvetica, sans-serif; color:#060b0f; width:180px; text-align:center; padding:3px 0 0 0; letter-spacing:0.5px;}
+
+.sep{width:740px; margin:15px 0 25px 12px; background:url(../images/sep.png) repeat-x left top; height:1px; float:left;}
+/* ======================================== Soccer Detailed Styles ============================================ */
+.detailed{width:760px; float:left; padding:25px 0 0 0; margin:0 0 0 10px;}
+.detailed_L{width:232px; float:left;}
+.detailed_L a{margin:10px 0 0 0; color:#056abf; font:normal 14px Arial, Helvetica, sans-serif; float:left;}
+
+.detailed_R{width:510px; float:left; margin:0px 0 0 13px;}
+.detailed_R h1{margin:0px 0 0 0; color:#3c3c3c; font:bold 14px Arial, Helvetica, sans-serif; float:left; width:250px;}
+.detailed_R h1.heading{font-size:16px; width:400px;}
+.detailed_R h2{margin:0px 0 0 0; color:#3c3c3c; font:normal 12px Arial, Helvetica, sans-serif; float:left; padding:15px 0 0 0; line-height:15px;}
+
+.VIP_members{width:375px; float:right; margin:40px 0 0 0;}
+.VIP_members img{float:left; margin:0 0 0 0px;}
+.VIP_members h2{margin:0px 0 0 0; color:#3c3c3c; font:bold 17px Arial, Helvetica, sans-serif; float:left; padding:8px 0 0 10px; line-height:15px; font-style:italic;}
+ .discount_pricing li.red{background-color:red;}
+.VIP_members h3{margin:0px 0 0 0; color:#3c3c3c; font:bold 12px Arial, Helvetica, sans-serif; float:right; padding:3px 5px 5px 0; line-height:15px; font-style:italic;}
+.VIP_members h3 a{color:#0766c1; text-decoration:underline;}
+.VIP_members h4{margin:0px 0 0 0; color:#fff; font:normal 16px Arial, Helvetica, sans-serif; width:271px; text-align:center; height:19px; float:right; padding:5px 0; line-height:17px; background:url(../images/red_bg.png) no-repeat left top;}
+
+.discount_pricing{width:525px; float: right;}
+.discount_pricing ul{margin:0px;}
+.discount_pricing li{width:67px; background-color:red; color:#3c3c3c; font:bold 11px Arial, Helvetica, sans-serif; text-align:center; height:20px; float:left; padding:5px 0 0 0; margin:1px 1px 0 0;}
+.discount_pricing li.non_members{width:92px; background-color:#e0e0e0;}
+.discount_pricing li.yellow{background-color:#ffda00; }
+.discount_pricing li.vip_C2{background-color:#f1f1af;}
+.discount_pricing li.vip_C3{background-color:#88d1ff;}
+.discount_pricing li.vip_C4{background-color:#d1d1d1;}
+ .discount_pricing li.red{background-color:#E0E0E0; font:#fff;}
+.discount_pricing h4{margin:0px 0 0 0; color:#fff; font:normal 16px Arial, Helvetica, sans-serif; width:271px; text-align:center; height:19px; float:right; padding:5px 0; line-height:17px; background:url(../images/red_bg.png) no-repeat left top;}
+
+.detailed_B{width:756px; margin-left:5px;float:left;}
+.detailed_B img{margin:0px; padding:0px;}
+.detailed_B h2{margin:0px 0 0 0; color:#ff0000; font:bold 14px Arial, Helvetica, sans-serif; padding-left:5px; padding-top:25px;}
+.detailed_B p{margin:0px 0 0 0; color:#3c3c3c; font:normal 12px Arial, Helvetica, sans-serif; padding-left:5px; padding-top:10px; padding-right:25px;}
+
+.fb_like{width:260px; margin:15px 0 0 0;}
+.fb_like img{margin:0px 10px 0 0; float:left;}
+.fb_like h4{margin:0px 0 0 0; color:#333333; font:normal 11px Arial, Helvetica, sans-serif; float:left; padding:4px 0 0 0;}
+
+.detailed_options{width:200px; background-color:#3c3c3c; float:left; margin:-8px 0 0px -1px; z-index:-1; position:relative; padding:30px 0 0px 0; height:599px;}
+.detailed_options input.plus{background:url(../images/plus.png) no-repeat left top; cursor:pointer; width:35px; height:30px; margin:5px 0 0 0; padding:0px;}
+.detailed_options input.quantity{font:normal 14px Arial, Helvetica, sans-serif; color:#3c3c3c; border:0px; float:left; width:50px;}
+.detailed_options input.cart{background:url(../images/add_to_cart.png) no-repeat left top; width:154px; height:34px; cursor:pointer; margin:15px 0 20px 27px; float:left;}
+.add_cart{width:165px; margin:0px auto;}
+.add_cart a{margin:15px 0 10px 0; color:#fff; font:normal 14px Arial, Helvetica, sans-serif; float:left; width:165px; text-align:center;}
+.add_cart label{color:#fff; font:normal 14px Arial, Helvetica, sans-serif;float:left; margin:0px 0 0 10px;}
+
+.sites{width:75px; margin:0px auto;}
+.sites a{margin:0px; float:left; width:35px;}
+.sites a img{margin:0px 0 0 5px; float:left;}
+
+/* ======================================== Footer Styles ============================================ */
+.footer{width:996px; margin:0px auto; height:310px;}
+.foot_box{width:962px; background:url(../images/home_foot_bg.png) repeat left top; height:300px; margin:0px 0 0 8px; float:left;}
+/* ======================================== Submenu Styles ============================================ */
+
+/* New Nav Menu ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
+
+#nav { 
+	margin: 0; 
+	padding: 0; 
+	line-height: 100%; 
+}
+
+#nav li {
+	margin: 0px;
+	padding: 0px;
+	position: relative;
+	list-style: none;
+}
+
+/* main level link */
+#nav a {
+	font:normal 15px Arial, Helvetica, sans-serif; 
+	color:#fff; 
+	padding:13px 19px;
+	float:left; 
+	display:block; 
+	text-decoration:none;
+}
+
+/* main level link hover */
+#nav .current a, #nav li:hover > a {
+	background:url(../images/nav_li_hover.png) repeat-x left top; 
+	color:#000; 
+	cursor:pointer;
+}
+
+/* sub levels link hover */
+#nav ul li:hover a, #nav li:hover li a {
+	width: 173px;
+	padding-right: 0px;
+	padding-left: 7px;
+}
+
+#nav ul a:hover {}
+
+/* dropdown */
+#nav li:hover > ul {
+	display: block;
+}
+
+/* level 2 list */
+#nav ul {
+	display: none;
+	margin: 0;
+	padding: 0;
+	width: 180px;
+	position: absolute;
+	top: 35px;
+	left: 0;
+	background-color: #353535;
+	color:#fff; 
+	cursor:pointer;
+	z-index: 10;
+}
+
+#nav ul li {
+	float: none;
+	margin: 0;
+	padding: 0;
+}
+
+#nav ul a {
+	padding:8px 13px; float:none;
+	font:normal 13px Arial, Helvetica, sans-serif; 
+	color:#fff;
+	cursor:pointer;
+	padding-right: 0px;
+}
+
+/* level 3+ list */
+#nav ul ul {
+	left: 180px;
+	top: 3px;
+	background-color: #000;
+}
+
+#nav ul ul li:hover > a {
+	background:url(../images/nav_li_hover_reg.gif) repeat-x left top;
+	color: #FFFFFF;
+}
+
+/* clearfix */
+#nav:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+
+#nav {
+	display: inline-block;
+} 
+
+html[xmlns] #nav {
+	display: block;
+}
+ 
+* html #nav {
+	height: 1%;
+}
+/*::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
+
+
+/* ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+input.address,
+select.address { height: 25px; width: 90%; border: 1px solid #c9c9c9; padding: 5px 0 0 3px; }
+input.button { width: 120px; height: 27px; border: 1px solid #afafaf; background:url(../images/price_range_bg.png) repeat-x; margin-top:5px; }
+input.couponcode { background: url(../images/SC_input.png) no-repeat left top; border: 1px solid #000; height: 30px; width: 206px; padding: 0 0 0 10px; margin: 0px; }
+input.applycoupon { border: 0px; padding: 0px; margin: 0px; position: absolute; width: 106px; height: 31px; cursor: pointer; background: url(../images/apply_coupon.png) no-repeat left top; }
+input.applycode { border: 0px; padding: 0px; margin: 0px; position: absolute; width: 106px; height: 31px; cursor: pointer; background: url(../images/apply_code.png) no-repeat left top; }
+input.shoppingcart { border: 0px; background: url(../images/shipping_bg.png) no-repeat left top; height: 32px; width: 152px; font-size: 12px; font-weight: bold; color: #fff; cursor: pointer; }
+input.proceed { width: 272px; border: 0px; background: url(../images/proceed.png) no-repeat left top; height: 46px; margin-left: 10px; }
+input.checkout { width: 175px; height: 25px; border: 1px solid #bebebe; vertical-align: middle; }
+input.samebilling { vertical-align: middle; width: 15px; height: 15px; border: 1px solid #bebebe; background-color: #fff; }
+
+img.cartthumb { width: 70px; border: 1px solid #bebebe; padding: 3px; }
+img.cartremove { cursor: pointer; }
+
+span.checkoutheadersmall { font-size: 12px; font-weight: normal; }
+
+td.err { font-weight: bold; color: #ff0000; }
+td.address { font-size: 12px; font-weight: bold; width: 250px; }
+td.headerbar { height: 30px; background:url(../images/price_range_bg.png) repeat-x; font-size: 14px; }
+td.cartheader { background-color: #ebebeb; border-top: 2px solid #bebebe; border-bottom: 2px solid #bebebe; font-size: 14px; font-weight: bold; text-align: center; width: 100px; }
+td.cartheaderR { background-color: #ebebeb; border-top: 2px solid #bebebe; border-bottom: 2px solid #bebebe; border-right: 2px solid #bebebe; font-size: 14px; font-weight: bold; text-align: center; width: 100px; }
+td.cartheaderL { background-color: #ebebeb; border-top: 2px solid #bebebe; border-bottom: 2px solid #bebebe; border-left: 2px solid #bebebe; font-size: 14px; font-weight: bold; text-align: center; width: 150px; }
+td.cartitem { color: #4b4b4b; text-align: left; border-bottom: 1px solid #ebebeb; }
+td.coupon { color: #fff; font-weight: bold; }
+td.totals { color: #4d4d4d; background-color: #ebebeb; font-size: 13px; font-weight: bold; width: 140px; }
+td.checkoutheader { background-color: #ff7e00; border-bottom: 1px solid #6b3500; height: 30px; font-size: 14px; font-weight: bold; color: #fff; }
+td.checkouttext { font-weight: bold; font-size: 12px; color: #353535; width: 210px; }
+td.orderheader { background-color: #e7e7e7; color: #3b3b3b; border-bottom: 1px solid #bebebe; font-size: 12px; font-weight: bold; }
+td.orderitems  { background-color: #f2f2f2; color: #3b3b3b; vertical-align: top; }
+td input.POC{width:200px; height:27px; cursor:pointer; background:url(http://216.172.162.226/~tomzulfi/images/print_conf.gif) no-repeat left top; border:0px;}
+
+div.notes { font-size: 14px; font-weight: bold; color: #fff; text-align: center; }
+div.main { width: 970px; }
+
+#mask { position:absolute; z-index:9000; background-color:#000; display:none; }
+#moreview .window {   position:absolute;   width:440px;   height:200px;   display:none;   z-index:9999;   padding:20px; border: 5px solid #c9c9c9; }     
+#moreview #moreimages {   width:500px;    height:400px; background: #fff; } 
+#moreview #moreimages img.thumbs { width: 80px; height: 80px; border: 2px solid #e9e9e9; cursor: pointer; padding: 5px; }
+
+manfac {font:Arial; font-weight:bold; font-size:14px; color:#FF0000; }
+
+
+/* :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+
+table.imprintOptions { width: 855px; margin-left: 100px; }
+
+table.imprintOptions td { border-bottom: 1px solid #ebebeb; }
+table.imprintOptions td.impheader { font-weight: bold;  }
+table.imprintOptions td.impLocation { padding-left: 20px; width: 90px; vertical-align: top; }
+table.imprintOptions td.impType { width: 250px; }
+table.imprintOptions td.impPrice { width: 100px; }
+table.imprintOptions td.noBtmBdr { border: none; }
+table.imprintOptions td.right { text-align: right; padding-right: 5px; }
+
+table.imprintOptions img { width: 30px; height: 30px; }
+
+
+/* :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+
+div.reset  li { display: list-item; list-style-type: disc; margin: auto; padding: auto; list-style-type: auto; }
+div.reset  h1 { font-size: 2em; margin: .67em 0 }
+div.reset  h2 { font-size: 1.5em; margin: .75em 0 }
+div.reset  h3 { font-size: 1.17em; margin: .83em 0 }
+div.reset  p, 
+div.reset  ul, 
+div.reset  ol { margin: 1.12em 0 }
+div.reset  h1, 
+div.reset  h2, 
+div.reset  h3, 
+div.reset  h4, 
+div.reset  h5, 
+div.reset  h6, 
+div.reset  b, 
+div.reset  strong { font-weight: bolder }
+div.reset  ol, 
+div.reset  ul, 
+div.reset  dir { margin-left: 10px; list-style-type: disc; }
+div.reset  ol { list-style-type: decimal }

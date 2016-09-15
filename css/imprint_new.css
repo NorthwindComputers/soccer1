@@ -1,0 +1,66 @@
+.imprint-design { width:961px; text-align:center; margin:0 auto; background: #fff; margin:10px 0 0 8px; overflow: auto; }
+
+.imprint-design div.designs   { float: left; width: 955px; border: 1px solid #e5e5e5; padding: 2px; margin-bottom: 20px; }
+.imprint-design div.desHeader { float: left; width: 941px; background-color: #db1e11; color: #fff; font-weight: bold; text-align: left; padding: 7px; }
+.imprint-design div.desPrice { float: left; width: 928px; background-color: #db1e11; color: #fff; font-weight: bold; text-align: right; padding: 7px 20px 7px 7px; }
+.imprint-design div.desPrice p { float: right; font-weight: bold; }
+.imprint-design div.options { width: 175px; float: left; padding: 10px; text-align: left; margin-left: 40px; }
+.imprint-design div.options input { margin: 0 5px 0 15px; }
+.imprint-design div.images { width: 250px; float: left; position: relative; }
+
+.imprint-design img.outline { width: 200px; }
+.imprint-design p.optHeader { font-size: 14px; margin: 0px 0px 10px 15px; font-weight: bold; }
+
+.imprint-design img.Front_main { position: absolute; left: 95px; top: 45px; width: 63px; height: 63px; }
+.imprint-design img.Front_pocket { position: absolute; left: 143px; top: 35px; width: 30px; height: 30px; }
+.imprint-design img.Back_main { 
+	position: absolute; 
+	left: 95px; 
+	top: 35px; /* 65px; */
+	width: 63px; 
+	height: 63px; 
+}
+.imprint-design img.Back_name { position: absolute; left: 75px; top: 30px; }
+.imprint-design img.Short_main { position: absolute; left: 142px; top: 80px; }
+.imprint-design img.Socks_main { position: absolute; left: 127px; top: 15px; width: 40px; height: 40px; }
+
+.imprint-design div.designOptions { float: left; width: 450px; }
+.imprint-design div.selImage { width: 200px; border: 1px solid #e5e5e5; padding: 2px; float: left; margin-top: 15px; }
+.imprint-design div.selImageHdr { width: 190px; background-color: #db1e11; color: #fff; text-align: left; padding: 5px; }
+.imprint-design div.selImage img { width: 50px; height: 50px; float: left; cursor: pointer; margin: 3px 5px; }
+.imprint-design div.selImage img.selImgHover { display: none; position: absolute; width: 100px; height: 100px; border: 2px solid #d1d1d1; background-color: #fff; }
+.imprint-design div.selColor { width: 200px; border: 1px solid #e5e5e5; padding: 2px; float: left; margin-left: 10px; margin-top: 15px; }
+.imprint-design div.optColors { width: 15px; height: 15px; margin: 5px 5px 0 0; float: left; cursor: pointer; }
+.imprint-design div.selNumber { width: 200px; border: 1px solid #e5e5e5; padding: 2px; float: left; margin-top: 15px; margin-left: 10px; }
+.imprint-design div.selNumberHdr { width: 190px; background-color: #db1e11; color: #fff; text-align: left; padding: 5px; }
+.imprint-design div.selName { width: 200px; border: 1px solid #e5e5e5; padding: 2px; float: left; margin-top: 15px; margin-left: 10px; }
+.imprint-design div.selNameHdr { width: 190px; background-color: #db1e11; color: #fff; text-align: left; padding: 5px; }
+.imprint-design div.selTeam { width: 200px; border: 1px solid #e5e5e5; padding: 2px; float: left; margin-top: 15px; margin-left: 10px; }
+.imprint-design div.selTeamHdr { width: 190px; background-color: #db1e11; color: #fff; text-align: left; padding: 5px; }
+.imprint-design input.textOpt { 
+	border: 1px solid #757575; 
+	margin: 5px 0 0 0; 
+	padding: 3px; 
+	/* 
+	float: left; 
+	width: 65px;  
+	*/
+}
+.imprint-design input.optFull { width: 170px; }
+.imprint-design input.continue { padding: 5px 10px; background-color: #db1e11; border: 1px solid #000; font-size: 14px; color: #fff; font-weight: bold; cursor: pointer; }
+.imprint-design input.repeat { border: 0px; font-weight: normal; margin-top: 5px; float: right; font-size: 12px; }
+
+.imprint-design div.desItems { width: 300px; float: left; border-right: 1px solid #e5e5e5; padding: 5px; }
+.imprint-design div.desItems img { width: 150px; float: left; }
+.imprint-design p.desDesc { float: left; width: 150px; text-align: left; }
+.imprint-design p.sizeText { padding: 5px 0px 0px 5px; width: 120px; float: left; text-align: left; margin-top: 5px; }
+
+.imprint-design div.pricechart { float: left; width: 400px; background-color: #fff; padding: 3px; text-align: center; display: none; }
+
+.imprint-design p.impHeader { background-color: #fe0000; color: #fff; width: 386px; font-weight: bold; font-size: 14px; padding: 7px; float: left; }
+.imprint-design p.price { width: 78px; margin-right: 2px; color: #000; float: left; margin-top: 2px; padding: 3px 0px; }
+.imprint-design p.default { background-color: #e0e0e0; }
+.imprint-design p.first { background-color: #f1f1af; }
+.imprint-design p.second { background-color: #88d1ff; }
+.imprint-design p.third { background-color: #d1d1d1; }
+.imprint-design p.fourth { background-color: #ffda00; }

@@ -1,0 +1,127 @@
+<?php
+/****************
+ *
+ * Main login admin file
+ * By: Richard Tuttle
+ * Last udpated: 16 June 2015
+ *
+ ******************/
+ 
+if (isset($_GET['email'])) { 
+	$filtered_var = htmlspecialchars($_GET['email'], ENT_QUOTES); 
+	$_GET['email'] = $filtered_var;
+}
+if (isset($_POST['email'])) { 
+	$filtered_var = htmlspecialchars($_POST['email'], ENT_QUOTES);
+	$_POST['email'] = $filtered_var;
+}
+if (isset($_REQUEST['email'])) { 
+	$filtered_var = htmlspecialchars($_REQUEST['email'], ENT_QUOTES); 
+	$_REQUEST['email'] = $filtered_var;
+}
+/*
+	$filtered_var = htmlspecialchars($_GET['userid'], ENT_QUOTES); 
+	$_GET['userid'] = $filtered_var;
+}
+if (isset($_POST['userid'])) { 
+	$filtered_var = htmlspecialchars($_POST['userid'], ENT_QUOTES);
+	$_POST['userid'] = $filtered_var;
+}
+if (isset($_REQUEST['userid'])) { 
+	$filtered_var = htmlspecialchars($_REQUEST['userid'], ENT_QUOTES); 
+	$_REQUEST['userid'] = $filtered_var;
+}
+*/
+	session_start();
+
+	if(isset($_POST["btnLogin"])) {
+		require 'includes/db.php';
+		$user = $_POST['user'];
+		$pswd = md5($_POST['pass']);
+		$sql_login = "SELECT * FROM `users` WHERE userid='$user' AND password='$pswd' LIMIT 1";
+		$result_login = mysql_query($sql_login);
+		$num_login = mysql_num_rows($result_login);
+		$row_login = mysql_fetch_assoc($result_login);
+		
+		if($num_login > 0) {
+			$_SESSION["userid"] = $row_login["userid"];
+			$_SESSION["email"] = $row_login["Email"];
+			header("location:index.php");
+		} else {
+			$err = "Invalid UserID or Password!";
+		}
+		mysql_close($conn);
+	}
+	
+	if(isset($_POST["btnForgot"])) {
+		require 'includes/db.php';
+		$sql_email = "SELECT userid, password FROM `users` WHERE email='$_POST[email]' LIMIT 1";
+		$result_email = mysql_query($sql_email);
+		$num_email = mysql_num_rows($result_email);
+		$row_email = mysql_fetch_assoc($result_email);
+		
+		if($num_email > 0) {
+			$to = $_POST["email"];
+			$subject = "SoccerOne Login Information.";
+			$mess  = "Below is your login information for SoccerOne\n\r";
+			$mess .= "UserID:  $row_email[userid]\n\r";
+			$mess .= "Password: $row_email[password]\n\r\n\r\n\r";
+			mail($to, $subject, $mess);
+			$err = "login information has been sent.";
+		} else {
+			$err = $_POST["email"]." was not found. Please try again.";
+		}
+		mysql_close($conn);
+	}
+
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Login</title>
+	<link rel="stylesheet" href="css/styles.css" type="text/css" />
+<script src="js/jquery-1.4.4.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("a").click(function(){
+		$("#login").slideUp('slow', function() {
+			$("#forgot").css("display", "block").slideDown('slow');
+		});
+	});
+});
+</script>
+</head>
+<body>
+<!-- Master Div starts from here -->
+<div class="Master_div"> 
+  <!-- Login Div starts from here -->
+  <div class="login">
+    <div class="login_T"></div>
+    <form action="" method="post">
+    <div id="login">
+    	<div class="login_C">
+            <label>User Name</label>
+            <label>Password</label>
+            <input type="text" id="user" name="user" value="" />
+            <input type="password" id="pass" name="pass" value="" />
+            <input type="submit" id="btnLogin" name="btnLogin" value="" class="L_submit"/>
+            <h6><span><?=$err;?></span></h6>
+            <h6><a href="#">Forget your password?</a></h6>
+            <div class="clear"></div>
+      	</div>
+    </div>
+    <div id="forgot" style="display: none;">
+    	<div class="login_C" style="text-align: center">
+            <label>Email Address</label><br/><br/>
+            <input type="text" id="email" name="email" />
+            <input type="submit" id="btnForgot" name="btnForgot" value="" class="L_submitF"  />
+        </div>
+        <div class="clear"></div>
+    </div>
+  </form>
+  </div>
+  <!-- Login Div ends here --> 
+</div>
+</body>
+</html>

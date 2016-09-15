@@ -1,0 +1,331 @@
+<?php
+/********************************************
+ * SoccerOne Administrative CMS Interface   
+ *                                          
+ * Version: 3.2.3                             
+ * Programming by: Richard Tuttle           
+ * Last Update: 09 September 2014                 
+ *******************************************/
+
+include_once("includes/header.php");
+include_once("includes/mainHeader.php");
+?>
+<style type="text/css">
+.style11 {font-family: Arial, Helvetica, sans-serif; line-height: 35px;}
+.style12 {font-family: "Century Gothic"}
+.style13 {font-family: "Century Gothic"; color: #FFFFFF; }
+</style>
+<script src="js/Chart.js"></script>
+<script type="text/javascript">
+$(function() {
+	$("#fromDate").datepicker({dateFormat: "yy-mm-dd"});
+	$("#toDate").datepicker({dateFormat: "yy-mm-dd"});
+});
+</script>
+</head>
+<body>
+<div class="Master_div"> 
+    <div class="PD_header">
+    	<div class="upper_head"></div>
+    		<div class="navi"><?php include_once('includes/menu_main.php'); ?>
+          		<div class="clear"></div>
+        	</div>
+  		</div>
+    <div class="PD_main_form">
+    	<div>
+        <?php
+			$month = date("M"). " - ".date("Y");
+			$sql_orders = "SELECT COUNT(id) AS TotalOrders, SUM(OrderTotal) AS OrderTotals, SUM(ShippingTotal) AS TotalShipping, SUM(Tax) AS TotalTax, CURDATE() FROM orders WHERE (Month(OrderDate)=MONTH(CURDATE()) AND Year(OrderDate)=YEAR(CURDATE()))";
+			$result_orders = mysql_query($sql_orders);
+			$row_orders = mysql_fetch_assoc($result_orders);
+			$totalorders = $row_orders["TotalOrders"];
+			$ordertotals = $row_orders["OrderTotals"];
+			$totalshipping = $row_orders["TotalShipping"];
+			$totaltax = $row_orders["TotalTax"];
+			$sql_customers = "SELECT COUNT(id) AS TotalCustomer FROM customers";
+			$result_customers = mysql_query($sql_customers);
+			$row_customers = mysql_fetch_assoc($result_customers);
+			$totalcustomers = $row_customers["TotalCustomer"];
+			$sql_newcustomer = "SELECT COUNT(id) AS NewCustomer FROM customers WHERE (Month(RegisterDate)=Month(current_date) AND Year(RegisterDate)=Year(current_date))";
+			$result_newcustomer = mysql_query($sql_newcustomer);
+			$row_newcustomer = mysql_fetch_assoc($result_newcustomer);
+			$newcustomer = $row_newcustomer["NewCustomer"];
+			$sql_newvips = "SELECT COUNT(id) AS NewVIP FROM customers WHERE (Month(VIPDate)=MONTH(CURDATE()) AND Year(VIPDate)=YEAR(CURDATE()))";
+			$result_newvips = mysql_query($sql_newvips);
+			$row_newvips = mysql_fetch_assoc($result_newvips);
+			$newVips = $row_newvips["NewVIP"];
+		?>
+		<table width="980" border="0" align="center" cellpadding="5" cellspacing="1">
+		<tr>
+			<th align="center" width="300" bgcolor="#00CCFF"><h3 class="style12"><?=$month;?></strong> at a Glance</h3></th>
+			<th width="25">&nbsp;</th>
+			<th width="300" bgcolor="#00CCFF"><h3><span class="style12">Top 5 Products Sold (Unit)</span></h5></th>
+			<th width="25">&nbsp;</th>
+			<th width="300" bgcolor="#00CCFF"><h3><span class="style12">Top 5 Customers</span></h5></th>
+		</tr>
+		<tr>
+			<td width="300" style="line-height:150%;">Number of orders: <?=$totalorders;?><br>
+			Monthly sales: $<?=number_format($ordertotals,2);?><br>
+			Monthly shipping: $<?=number_format($totalshipping,2);?><br>
+			Monthly taxes: $<?=number_format($totaltax,2);?><br>
+			New customers this month: <?=$newcustomer;?><br>
+			New VIP members this month: <?=$newVips;?></td>
+			<td width="25">&nbsp;</td>
+			<td width="300" style="line-height:150%;"><?php
+			$sql_prods = "SELECT ProductName, RootSKU, SUM(Qty) AS TotalSold FROM orders_items, orders WHERE orders.id=orders_items.OrderID AND Month(OrderDate)=Month(current_date) AND Year(OrderDate) = Year(current_date) GROUP BY ProductName, RootSKU ORDER BY SUM(Qty) DESC LIMIT 5";
+			$result_prods = mysql_query($sql_prods);
+			while ($row_prods = mysql_fetch_array($result_prods)) {
+				echo $row_prods["ProductName"]." - ".$row_prods["RootSKU"]." (".$row_prods["TotalSold"].")<br/>";
+			}
+			?></td>
+			<td width="25">&nbsp;</td>
+			<td width="300" style="line-height:150%;"><?php
+			$sql_customers = "SELECT EmailAddress, COUNT(id) AS TotalOrders, SUM(GrandTotal) AS Total FROM orders WHERE Month(OrderDate)=Month(current_date) AND Year(OrderDate)=Year(current_date) GROUP BY EmailAddress ORDER BY Total DESC LIMIT 5 ";
+			$result_customers = mysql_query($sql_customers);
+			while($row_customers = mysql_fetch_assoc($result_customers)) {
+				$sql_name = "SELECT FirstName, LastName FROM customers WHERE EmailAddress='$row_customers[EmailAddress]' LIMIT 1";
+				$result_name = mysql_query($sql_name);
+				$row_name = mysql_fetch_assoc($result_name);
+				echo $row_name["FirstName"]." ".$row_name["LastName"]." (".$row_customers["TotalOrders"].") - $" .number_format($row_customers["Total"],2). "<br>";
+			}
+			?></td>
+		</tr>
+		<tr>
+			<th align="center" width="300" bgcolor="#00CCFF"><h3 class="style12">Top 5 Promo Codes</h3></th>
+			<th width="25">&nbsp;</th>
+			<th width="300" bgcolor="#00CCFF"><h3><span class="style12">Top 5 Referrers</span></h5></th>
+			<th width="25">&nbsp;</th>
+			<th width="300" bgcolor="#00CCFF"><h3><span class="style12">Ordering Information</span></h5></th>
+		</tr>
+		<tr>
+			<td width="300" style="line-height:150%;"><?php
+			$sql_prods = "SELECT ProductName, Type, SUM(GrandTotal) AS TotalOrder FROM orders_items, orders WHERE orders.id=orders_items.OrderID AND Month(OrderDate)=Month(current_date) AND Year(OrderDate)=Year(current_date) AND Type='Coupon' GROUP BY ProductName ORDER BY SUM(GrandTotal) DESC LIMIT 5";
+			$result_prods = mysql_query($sql_prods);
+			$count = 0;
+			while ($row_prods = mysql_fetch_array($result_prods)) {
+				$tempSQL = "SELECT COUNT(*) AS TotalCount FROM orders_items WHERE Type='Coupon' AND ProductName='$row_prods[ProductName]'";
+				$tempResult = mysql_query($tempSQL);
+				$tempRow = mysql_fetch_assoc($tempResult);
+				echo $row_prods["ProductName"]." - $" .number_format($row_prods["TotalOrder"],2). " - (" . $tempRow["TotalCount"] . ")<br>";
+			}
+			?></td>
+			<td width="25">&nbsp;</td>
+			<td width="300" style="line-height:150%;"><?php
+			$sql_ref = "SELECT DISTINCT * FROM orders WHERE (Month(OrderDate)=Month(current_date) AND Year(OrderDate)=Year(current_date))";
+			$result_ref = mysql_query($sql_ref) or die("SQL ERROR: " . mysql_error());
+			$tempHost = '';
+			$counter = 0;
+			while ($row_ref = mysql_fetch_array($result_ref)) {
+				if ($row_ref["referrer"] == '' || $row_ref["referrer"] == NULL) {
+				} else {
+					$sql_count = "SELECT COUNT(*) AS CountTotal FROM orders WHERE referrer='$row_ref[referrer]'";
+					$result_count = mysql_query($sql_count) or die("COUNT ERROR: " . mysql_error());
+					$row_count = mysql_fetch_assoc($result_count);
+					$url = $row_ref["referrer"];
+					$host = str_ireplace('www.', '', parse_url($url, PHP_URL_HOST));
+					if ($host == $tempHost) {
+					} else {
+						echo $host . " - (" . $row_count["CountTotal"] . ")<br>";
+						$tempHost = $host;
+						$counter++;
+						if ($counter > 5) { 
+							break;
+						}
+					}
+				}
+			}
+			?></td>
+			<td width="25">&nbsp;</td>
+			<td width="300" style="line-height:150%;"><form action="orderInfo.php" method="post">
+        	<table width="100%" cellpadding="5">
+        	<tr>
+        		<td>from:<br><input type="text" style="margin-bottom: 5px;" id="fromDate" name="fromDate" value=""><br>
+        			to:<br><input type="text" style="margin-bottom: 5px;" id="toDate" name="toDate" value=""></td>
+        		<td width="50">&nbsp;</td>
+        		<td><input type="submit" name="submit" value="Gather Data"></td>
+        	</tr>
+        	</table>
+        	</form></td>
+		</tr>
+		</table>
+		
+        <table width="980" border="0" align="center" cellpadding="5" cellspacing="0">
+        <tr>
+            <td width="25%" height="35" align="left" bgcolor="#333333"><h3 class="style13">Number of Daily Sales Comparison for <?=$month;?></h3></td>
+        </tr>
+        <tr>
+            <td><?php
+            $sql_sales = "SELECT day(OrderDate) AS OrderDay, COUNT(id) AS NumOrders FROM orders WHERE Month(OrderDate)=Month(current_date) AND Year(OrderDate)=Year(current_date) GROUP BY OrderDate";
+			$result_sales = mysql_query($sql_sales);
+			while ($row_sales = mysql_fetch_assoc($result_sales)) {
+				$orders[$row_sales["OrderDay"]] = $row_sales["NumOrders"];
+			}
+			$totaldays = date("t");
+			for ($i = 1; $i <= $totaldays; $i++) {
+				$days .= $i.",";
+				if ($orders[$i] == '') {
+					$sales .= "0, ";
+				} else {
+					if ($max < $orders[$i]) {
+						$max = $orders[$i];
+					}
+					$sales .= $orders[$i].", ";
+				}
+			}	
+			$max = $max + 10;
+            ?>
+            <canvas id="myChart2" width="980" height="400"></canvas>
+			</td>
+        </tr>
+        </table>
+        
+        <table width="980" border="0" align="center" cellpadding="5" cellspacing="0">
+        <tr>
+            <td colspan="2" width="25%" height="35" align="left" bgcolor="#333333"><h3 class="style13">YTD vs. Previous Year Monthly Sales Comparison</h3></td>
+        </tr>
+        <tr>
+        	<td colspan="2">
+        	<?php
+        	// get last years monthly sales figures for first dataset
+        	$fill = 2;
+        	$Count = 1;
+        	$time = strtotime('-1 year'); 
+        	$lastYear = date('Y', $time);
+        	$thisYear = date('Y');
+        	while ($Count <= 12) {
+        		$monthTotal = 0;
+        		// echo "Month Total Initial: " . $monthTotal . "<br>"; // testing only
+        		$monthCount = str_pad($Count, $fill, '0', STR_PAD_LEFT);
+        		$sql_lastYear = "SELECT OrderDate, GrandTotal FROM orders WHERE Month(OrderDate)=$monthCount AND Year(OrderDate)=$lastYear";
+        		// echo "SQL: " . $sql_lastYear; exit; // testing only
+        		$result_lastYear = mysql_query($sql_lastYear) or die("SQL ERROR: last year - " . mysql_error());
+        		while ($row_lastYear = mysql_fetch_array($result_lastYear)) {
+        			$monthTotal += $row_lastYear["GrandTotal"];
+        		}
+        		// echo "Month Total: " . $Count . " " . number_format($monthTotal, 2, '.', '') . "<br>"; // testing only
+        		if ($Count == "1") {
+        			$preJanTotal = $monthTotal;
+        		} elseif ($Count == "2") {
+        			$preFebTotal = $monthTotal;
+        		} elseif ($Count == "3") {
+        			$preMarTotal = $monthTotal;
+        		} elseif ($Count == "4") {
+        			$preAprTotal = $monthTotal;
+        		} elseif ($Count == "5") {
+        			$preMayTotal = $monthTotal;
+        		} elseif ($Count == "6") {
+        			$preJunTotal = $monthTotal;
+        		} elseif ($Count == "7") {
+        			$preJulTotal = $monthTotal;
+        		} elseif ($Count == "8") {
+        			$preAugTotal = $monthTotal;
+        		} elseif ($Count == "9") {
+        			$preSepTotal = $monthTotal;
+        		} elseif ($Count == "10") {
+        			$preOctTotal = $monthTotal;
+        		} elseif ($Count == "11") {
+        			$preNovTotal = $monthTotal;
+        		} elseif ($Count == "12") {
+        			$preDecTotal = $monthTotal;
+        		}
+        		$Count++;
+        	}
+        	
+        	// get YTD monthly sales figures for second dataset
+        	$fill = 2;
+        	$Count = 1;
+        	while ($Count <= 12) {
+        		$monthCount = str_pad($Count, $fill, '0', STR_PAD_LEFT);
+        		$sql_YTD = "SELECT OrderDate, GrandTotal FROM orders WHERE Year(OrderDate)=$thisYear AND Month(OrderDate)=$monthCount";
+        		// echo "SQL: " . $sql_YTD; exit; // testing only
+        		$result_YTD = mysql_query($sql_YTD) or die("SQL ERROR: YTD - " . mysql_error());
+        		$monthTotal = 0;
+        		while ($row_YTD = mysql_fetch_array($result_YTD)) {
+        			$monthTotal += $row_YTD["GrandTotal"];
+        		}
+        		if ($Count == "1") {
+        			$JanTotal = $monthTotal;
+        		} elseif ($Count == "2") {
+        			$FebTotal = $monthTotal;
+        		} elseif ($Count == "3") {
+        			$MarTotal = $monthTotal;
+        		} elseif ($Count == "4") {
+        			$AprTotal = $monthTotal;
+        		} elseif ($Count == "5") {
+        			$MayTotal = $monthTotal;
+        		} elseif ($Count == "6") {
+        			$JunTotal = $monthTotal;
+        		} elseif ($Count == "7") {
+        			$JulTotal = $monthTotal;
+        		} elseif ($Count == "8") {
+        			$AugTotal = $monthTotal;
+        		} elseif ($Count == "9") {
+        			$SepTotal = $monthTotal;
+        		} elseif ($Count == "10") {
+        			$OctTotal = $monthTotal;
+        		} elseif ($Count == "11") {
+        			$NovTotal = $monthTotal;
+        		} elseif ($Count == "12") {
+        			$DecTotal = $monthTotal;
+        		}
+        		$Count++;
+        	}
+        	?>
+        	<canvas id="myChart" width="980" height="400"></canvas>
+        	</td>
+        </tr>
+        </table>
+        <strong>LEGEND</strong>
+        <table width="100" cellpadding="10" cellspacing="10">
+        <tr>
+        	<td width="50%" bgcolor="#d1e0ff"><?php $time=strtotime('-1 year'); echo date('Y',$time); ?></td>
+        	<td width="50%" bgcolor="#000099"><font color="#ffffff"><?php echo date("Y"); ?></font></td>
+        </tr>
+        </table>
+		<script>
+		var ctx = $("#myChart").get(0).getContext("2d");
+		var ctx2 = $("#myChart2").get(0).getContext("2d");
+		var data2 = {
+			labels: [<?php $totaldays=date("t");for($i=1;$i<=$totaldays;$i++){echo '"'.$i.'", ';}?>],
+			datasets: [{
+				label: "Monthly Daily Sales",
+				fillColor: "#3399FF",
+				strokeColor: "#297ACC",
+				highlightColor: "#BFD7F0",
+				HightlistStroke: "#BFD7F0",
+				data: [<?php echo $sales;?>]
+			}]
+		};
+		var data = {
+			labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+			datasets: [{
+				label: "Previous Year Monthly Sales",
+				fillColor: "rgba(209, 224, 255, 0.5)",
+				strokeColor: "#D1E0FF",
+				pointColor: "#d1e0ff",
+				pointStrokeColor: "#d1e0ff",
+				pointHighlightFill: "#D1B2C2",
+				pointHightlistStroke: "#D1B2C2",
+				data: [<?=$preJanTotal;?>, <?=$preFebTotal;?>, <?=$preMarTotal;?>, <?=$preAprTotal;?>, <?=$preMayTotal;?>, <?=$preJunTotal;?>, <?=$preJulTotal;?>, <?=$preAugTotal;?>, <?=$preSepTotal;?>, <?=$preOctTotal;?>, <?=$preNovTotal;?>, <?=$preDecTotal;?>]
+			},
+			{
+				label: "YTD Monthly Sales",
+				fillColor: "rgba(0, 0, 153, 0.5)",
+				strokeColor: "#000099",
+				pointColor: "#000099",
+				pointStrokeColor: "#000099",
+				pointHighlightFill: "#660033",
+				pointHightlistStroke: "rgba(220,220,220,1)",
+				data: [<?=$JanTotal;?>, <?=$FebTotal;?>, <?=$MarTotal;?>, <?=$AprTotal;?>, <?=$MayTotal;?>, <?=$JunTotal;?>, <?=$JulTotal;?>, <?=$AugTotal;?>, <?=$SepTotal;?>, <?=$OctTotal;?>, <?=$NovTotal;?>, <?=$DecTotal;?>]
+			}]
+		};
+		var myBarChart = new Chart(ctx2).Bar(data2);
+		var myLineChart = new Chart(ctx).Line(data);
+		</script>
+    </div>
+    <div class="clear"></div>
+  	</div>
+</div>
+</body>
+</html>
+<?php mysql_close($conn); ?>
